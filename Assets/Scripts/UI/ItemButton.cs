@@ -3,11 +3,19 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class ItemButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDraggable
 {
     [SerializeField] private Image Icon;
 
     private InventoryItem _item;
+    public InventoryItem Item => _item;
+
+    private DragAndDropController _dragAndDropController;
+
+    private void Awake()
+    {
+        _dragAndDropController = GameObject.FindWithTag("DragAndDropController").GetComponent<DragAndDropController>();
+    }
 
     public void SetContent(InventoryItem item)
     {
@@ -27,6 +35,7 @@ public class ItemButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         if (_item != null)
         {
+            _dragAndDropController.StartDrag(this, LayerMask.GetMask("Field"));
             Debug.Log("OnPointerDown");
             //TODO: move sprite
         }
@@ -41,14 +50,17 @@ public class ItemButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             var worldPosition = Camera.main.ScreenToWorldPoint(eventData.position);
             worldPosition.z = 0;
 
-            if (PlacementManager.Place(_item, worldPosition))
+            var target = _dragAndDropController.EndDrag();
+
+            if (target != null)
             {
-                Clear();
+                if (target.TryDrop(this))
+                {
+                    Clear();
+                }
             }
-            else
-            {
-                //TODO: return sprite back
-            }
+            
+            //TODO: return sprite back
         }
     }
 }
