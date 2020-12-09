@@ -7,6 +7,9 @@ public class UIController : MonoBehaviour
     [SerializeField] private ItemButtons _itemButtons;
 
     [SerializeField] private Button _tapToStart;
+    
+    [SerializeField] private Button _winButton;
+    [SerializeField] private Button _loseButton;
 
     private void Awake()
     {
@@ -17,6 +20,16 @@ public class UIController : MonoBehaviour
     public void UpdateItemButtons(List<InventoryItem> inventoryItems)
     {
         _itemButtons.UpdateButtons(inventoryItems);
+    }
+
+    public void ShowWin()
+    {
+        _winButton.gameObject.SetActive(true);
+    }
+
+    public void ShowLose()
+    {
+        _loseButton.gameObject.SetActive(true);
     }
 
     private void OnOnInventoryItemPlaced()

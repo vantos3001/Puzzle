@@ -11,7 +11,12 @@ public class Player : MonoBehaviour
     private bool _isMove;
 
     private bool _isDead;
-    
+
+    private void Awake()
+    {
+        Path.OnPathEnded += OnPathEnded;
+    }
+
     private void Update()
     {
         if (_isMove)
@@ -27,7 +32,9 @@ public class Player : MonoBehaviour
         _isDead = true;
         Debug.Log("IS DEAD NOW");
 
-        _isMove = false;
+        Stop();
+        
+        EventManager.NotifyPlayerDead();
     }
 
     public void Stop()
@@ -58,5 +65,15 @@ public class Player : MonoBehaviour
 
         transform.position = Vector3.Lerp(transform.position, point.transform.position, t);
     }
-    
+
+    private void OnPathEnded()
+    {
+        Stop();
+        EventManager.NotifyPlayerPathEnded();
+    }
+
+    private void OnDestroy()
+    {
+        Path.OnPathEnded -= OnPathEnded;
+    }
 }

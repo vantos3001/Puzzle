@@ -22,6 +22,8 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         EventManager.OnTapToStartClicked += Play;
+        EventManager.OnPlayerPathEnded += Win;
+        EventManager.OnPlayerDead += Lose;
         
         UiController.UpdateItemButtons(Inventory.InventoryItems);
 
@@ -46,6 +48,24 @@ public class GameController : MonoBehaviour
         }
     }
 
+    private void Win()
+    {
+        if (_gameState == GameState.Play)
+        {
+            ChangeState(GameState.Win);
+            UiController.ShowWin();
+        }
+    }
+
+    private void Lose()
+    {
+        if (_gameState == GameState.Play)
+        {
+            ChangeState(GameState.Lose);
+            UiController.ShowLose();
+        }
+    }
+
     private void ChangeState(GameState gameState)
     {
         _gameState = gameState;
@@ -54,5 +74,7 @@ public class GameController : MonoBehaviour
     private void OnDestroy()
     {
         EventManager.OnTapToStartClicked -= Play;
+        EventManager.OnPlayerPathEnded -= Win;
+        EventManager.OnPlayerDead -= Lose;
     }
 }

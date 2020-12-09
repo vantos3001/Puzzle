@@ -8,6 +8,9 @@ public class Path : MonoBehaviour
 
     private Transform _currentPoint;
     public Transform CurrentPoint => _currentPoint;
+
+    private bool _isEnd;
+    public Action OnPathEnded;
     
     private int _currentIndex;
     
@@ -24,6 +27,19 @@ public class Path : MonoBehaviour
             _currentIndex++;
             _currentPoint = Points[_currentIndex];
         }
+        else
+        {
+            if (!_isEnd)
+            {
+                End();
+            }
+        }
+    }
+
+    private void End()
+    {
+        _isEnd = true;
+        OnPathEnded?.Invoke();
     }
     
 }
