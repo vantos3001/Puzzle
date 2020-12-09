@@ -24,6 +24,17 @@ public class ItemButtons : MonoBehaviour
             }
         }
     }
-    
-    
+
+    public bool IsAllFree()
+    {
+        foreach (var itemButton in _itemButtons)
+        {
+            if (!itemButton.IsFree())
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }

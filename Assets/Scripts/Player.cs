@@ -8,30 +8,36 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float Speed = 1;
 
+    private bool _isMove;
+
     private bool _isDead;
-
-    public bool IsDead
-    {
-        get => _isDead;
-        set
-        {
-            if (_isDead == value) return;
-
-            _isDead = value;
-            
-            if (_isDead)
-            {
-                Debug.Log("IS DEAD NOW");
-            }
-        }
-    }
     
     private void Update()
     {
-        if (!_isDead)
+        if (_isMove)
         {
             Move();
         }
+    }
+
+    public void Die()
+    {
+        if(_isDead) return;
+
+        _isDead = true;
+        Debug.Log("IS DEAD NOW");
+
+        _isMove = false;
+    }
+
+    public void Stop()
+    {
+        _isMove = false;
+    }
+
+    public void StartMove()
+    {
+        _isMove = true;
     }
 
     private void Move()

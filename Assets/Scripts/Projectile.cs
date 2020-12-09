@@ -15,7 +15,7 @@ public class Projectile : MonoBehaviour
         var player = other.gameObject.GetComponent<Player>();
         if (player != null)
         {
-            player.IsDead = true;
+            player.Die();
         }
         
         var wall = other.gameObject.GetComponent<WallItem>();

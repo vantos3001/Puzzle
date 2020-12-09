@@ -23,6 +23,11 @@ public class ItemButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
         
         Icon.sprite = DataManager.GetInventoryItemIcons(item.Data.IconName);
     }
+
+    public bool IsFree()
+    {
+        return _item == null;
+    }
     
     public void Clear()
     {
@@ -57,6 +62,7 @@ public class ItemButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
                 if (target.TryDrop(this))
                 {
                     Clear();
+                    EventManager.NotifyInventoryItemPlaced();
                 }
             }
             

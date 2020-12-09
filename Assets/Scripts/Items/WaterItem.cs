@@ -7,7 +7,7 @@ public class WaterItem : Item
         var player = other.gameObject.GetComponent<Player>();
         if (player != null)
         {
-            player.IsDead = true;
+            player.Die();
             Debug.Log("WaterItemWork");
         }
     }
