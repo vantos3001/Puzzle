@@ -1,9 +1,143 @@
-﻿
+﻿using System.Collections.Generic;
+using UnityEngine;
 
-public class LevelBuilder
+//TODO: remove from static
+public static class LevelBuilder
 {
-    public void BuildLevel(LevelData levelData)
+    public static Level BuildLevel(LevelData levelData)
     {
-        //TODO: BuildLevel
+        var level = new Level(levelData);
+        
+        var field = SpawnField(levelData.CellDates);
+        level.InjectField(field);
+        
+        var inventory = SpawnInventory(levelData.InventoryItemDates);
+        level.InjectInventory(inventory);
+
+        //TODO: use fieldSize for cellSpawn
+        //TODO: use fieldSize points for CellSpawn
+        //TODO: add playerPath
+
+        return level;
+    }
+
+    private static Field SpawnField(List<CellData> cellDates)
+    {
+        var fieldPrefab = DataManager.GetPrefab("Field", "Prefabs");
+        var fieldGO = Object.Instantiate(fieldPrefab);
+        var cells = new List<Cell>();
+        foreach (var data in cellDates)
+        {
+            var cell = PlacementManager.CreateCell(data.CellPrefab, fieldGO.transform);
+
+            if (data.Item != null)
+            {
+                cell.SetItem(data.Item);
+            }
+            
+            cells.Add(cell);
+        }
+
+        var field = fieldGO.GetComponent<Field>();
+        field.InjectCells(cells);
+        
+        return field;
+    }
+
+    private static Inventory SpawnInventory(List<InventoryItemData> inventoryItemDates)
+    {
+        var itemList = new List<InventoryItem>();
+
+        foreach (var data in inventoryItemDates)
+        {
+            var item = new InventoryItem
+            {
+                Data = data
+            };
+            itemList.Add(item);
+        }
+        
+        return new Inventory(itemList);
+    }
+
+    public static Level BuildTestLevel()
+    {
+        var data = new LevelData
+        {
+            InventoryItemDates = GetTestItems().ConvertAll(item => item.Data),
+            FieldSize = new Vector2(5, 5),
+            StartFieldPoint = new Vector2(10, 10),
+            CellDates = GetTestCells(),
+            Path = GetTestPath()
+        };
+
+        return BuildLevel(data);
+    }
+
+    private static List<InventoryItem> GetTestItems()
+    {
+        var inventoryItems = new List<InventoryItem>();
+        inventoryItems.Add(new InventoryItem
+        {
+            Data = new InventoryItemData
+            {
+                Type = InventoryItemType.Wall,
+                IconName = "wall_icon",
+                ItemPrefab = "WallItem"
+            }
+        });
+        inventoryItems.Add(new InventoryItem
+        {
+            Data = new InventoryItemData
+            {
+                Type = InventoryItemType.Wall,
+                IconName = "wall_icon",
+                ItemPrefab = "WallItem"
+            }
+        });
+
+        return inventoryItems;
+    }
+
+    private static List<CellData> GetTestCells()
+    {
+        var cellDates = new List<CellData>();
+
+        for (int i = 0; i < 5; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                var data = new CellData();
+                data.Coords = new PointData(i, j);
+                data.CellPrefab = "Cell";
+                data.Background = "Default";
+
+                if (i == 2 && j == 0)
+                {
+                    data.Item = new ItemData
+                    {
+                        ItemPrefab = "WallItem",
+                        Type = InventoryItemType.Wall
+                    };
+                }
+                
+                cellDates.Add(data);
+            }
+        }
+
+        return cellDates;
+    }
+
+    private static PathData GetTestPath()
+    {
+        var data = new PathData();
+        data.CellPoints.Add(new PointData(0, 0));
+        data.CellPoints.Add(new PointData(0, 1));
+        data.CellPoints.Add(new PointData(1, 1));
+        data.CellPoints.Add(new PointData(2, 1));
+        data.CellPoints.Add(new PointData(3, 1));
+        data.CellPoints.Add(new PointData(4, 1));
+
+        return data;
     }
 }

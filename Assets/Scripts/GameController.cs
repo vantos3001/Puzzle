@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public enum GameState
 {
@@ -14,10 +13,10 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] private UIController UiController;
     [SerializeField] private Player Player;
-
-    private Inventory Inventory = new Inventory();
-
+    
     private GameState _gameState = GameState.None;
+
+    private Level _level;
 
     private void Awake()
     {
@@ -25,7 +24,14 @@ public class GameController : MonoBehaviour
         EventManager.OnPlayerPathEnded += Win;
         EventManager.OnPlayerDead += Lose;
         
-        UiController.UpdateItemButtons(Inventory.InventoryItems);
+        LoadGame();
+    }
+
+    private void LoadGame()
+    {
+        _level = LevelBuilder.BuildTestLevel();
+        
+        UiController.UpdateItemButtons(_level.Inventory.InventoryItems);
 
         Prepare();
     }

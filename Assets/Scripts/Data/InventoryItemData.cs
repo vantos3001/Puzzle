@@ -1,8 +1,5 @@
 ﻿
-public class InventoryItemData
+public class InventoryItemData : ItemData
 {
-    public InventoryItemType Type;
-
     public string IconName;
-    public string ItemPrefab;
 }

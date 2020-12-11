@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public static class PlacementManager
 {
-    public static bool Place(InventoryItem inventoryItem, Vector3 position, out Item item)
+    public static bool Place(string itemPrefabName, Vector3 position, out Item item)
     {
-        var itemPrefab = DataManager.GetItemPrefab(inventoryItem.Data.ItemPrefab);
+        var itemPrefab = DataManager.GetItemPrefab(itemPrefabName);
 
         if (itemPrefab != null)
         {
@@ -19,5 +19,19 @@ public static class PlacementManager
         item = null;
 
         return false;
+    }
+
+    public static Cell CreateCell(string cellPrefabName, Transform parent)
+    {
+        var cellPrefab = DataManager.GetPrefab(cellPrefabName, "Prefabs");
+
+        if (cellPrefab != null)
+        {
+            var itemGO = Object.Instantiate(cellPrefab, parent, true);
+            var cell = itemGO.GetComponent<Cell>();
+            return cell;
+        }
+        
+        throw new Exception("Not found cellPrefab = " + cellPrefabName);
     }
 }

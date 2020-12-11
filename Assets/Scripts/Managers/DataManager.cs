@@ -7,6 +7,8 @@ public static class DataManager
     private static Dictionary<string, Sprite> _cachedInventoryItemIcons = new Dictionary<string, Sprite>();
     private static Dictionary<string, GameObject> _cachedItemPrefabs = new Dictionary<string, GameObject>();
     
+    private static Dictionary<string, GameObject> _cachedOtherPrefabs = new Dictionary<string, GameObject>();
+    
     public static Sprite GetInventoryItemIcons(string iconName)
     {
         Sprite icon = null;
@@ -40,7 +42,7 @@ public static class DataManager
             return prefab;
         }
 
-        prefab = Resources.Load<GameObject>($"ItemPrefabs/{prefabName}");
+        prefab = Resources.Load<GameObject>($"Prefabs/Items/{prefabName}");
 
         if (prefab != null)
         {
@@ -54,5 +56,28 @@ public static class DataManager
 
         return prefab;
     }
-    
+
+    public static GameObject GetPrefab(string prefabName, string path)
+    {
+        GameObject prefab = null;
+
+        if (_cachedOtherPrefabs.TryGetValue(prefabName, out prefab))
+        {
+            return prefab;
+        }
+
+        prefab = Resources.Load<GameObject>($"{path}/{prefabName}");
+
+        if (prefab != null)
+        {
+            _cachedOtherPrefabs.Add(prefabName, prefab);
+            return prefab;
+        }
+        else
+        {
+            Debug.LogError("Not found Prefab with name = " + prefabName);
+        }
+
+        return prefab;
+    }
 }

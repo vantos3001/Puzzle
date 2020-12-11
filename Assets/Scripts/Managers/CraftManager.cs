@@ -10,11 +10,11 @@ public class CraftRecipeData
 
 public static class CraftManager
 {
-    private static List<CraftRecipeData> _craftRecipeDatas = new List<CraftRecipeData>();
+    private static List<CraftRecipeData> _craftRecipeDates = new List<CraftRecipeData>();
     
     public static string Craft(string from, string to)
     {
-        var recipe = _craftRecipeDatas.Find(craft => craft.From == from && craft.To == to);
+        var recipe = _craftRecipeDates.Find(craft => craft.From == from && craft.To == to);
 
         if (recipe != null)
         {

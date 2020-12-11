@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class Field : MonoBehaviour
 {
-    [SerializeField] private List<Ceil> _ceils;
+    private List<Cell> _cells;
+
+    public void InjectCells(List<Cell> cells)
+    {
+        _cells = cells;
+    }
     
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Ceil : MonoBehaviour, IDroppable
+public class Cell : MonoBehaviour, IDroppable
 {
     private Item _item;
 
@@ -29,22 +29,27 @@ public class Ceil : MonoBehaviour, IDroppable
         return false;
     }
 
+    public bool SetItem(ItemData itemData)
+    {
+        if (PlacementManager.Place(itemData.ItemPrefab, transform.position, out Item item))
+        {
+            _item = item;
+                
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public bool TryDrop(IDraggable draggable)
     {
         if (CanDrop(draggable))
         {
             var itemButton = draggable as ItemButton;
-
-            if (PlacementManager.Place(itemButton.Item, transform.position, out Item item))
-            {
-                _item = item;
-                
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            
+            return SetItem(itemButton.Item.Data);
         }
 
         return false;
