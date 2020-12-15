@@ -17,11 +17,6 @@ public static class LevelBuilder
         var playerPath = SpawnPath(levelData.Path, field.Cells);
         level.InjectPlayerPath(playerPath);
 
-        //TODO: use fieldSize for cellSpawn
-        
-        
-        //TODO: use fieldSize points for CellSpawn
-
         return level;
     }
 
