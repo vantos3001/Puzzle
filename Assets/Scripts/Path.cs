@@ -2,30 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Path : MonoBehaviour
+public class Path
 {
-    [SerializeField] private List<Transform> Points;
-
-    private Transform _currentPoint;
-    public Transform CurrentPoint => _currentPoint;
+    private List<Vector3> _points = new List<Vector3>();
+    
+    private Vector3 _currentPoint;
+    public Vector3 CurrentPoint => _currentPoint;
 
     private bool _isEnd;
     public Action OnPathEnded;
     
     private int _currentIndex;
-    
-    private void Start()
+
+    public Path(List<Vector3> points)
     {
-        _currentPoint = Points[0];
+        _points = points;
+        
+        _currentPoint = _points[0];
         _currentIndex = 0;
     }
 
     public void ChangePoint()
     {
-        if (_currentIndex < Points.Count - 1)
+        if (_currentIndex < _points.Count - 1)
         {
             _currentIndex++;
-            _currentPoint = Points[_currentIndex];
+            _currentPoint = _points[_currentIndex];
         }
         else
         {

@@ -9,6 +9,9 @@ public class Level
     private Inventory _inventory;
     public Inventory Inventory => _inventory;
 
+    private Path _playerPath;
+    public Path PlayerPath => _playerPath;
+
     public Level(LevelData levelData)
     {
         _levelData = levelData;
@@ -22,5 +25,10 @@ public class Level
     public void InjectInventory(Inventory inventory)
     {
         _inventory = inventory;
+    }
+
+    public void InjectPlayerPath(Path playerPath)
+    {
+        _playerPath = playerPath;
     }
 }

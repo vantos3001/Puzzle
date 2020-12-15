@@ -4,6 +4,14 @@ public class Cell : MonoBehaviour, IDroppable
 {
     private Item _item;
 
+    private CellData _data;
+    public CellData Data => _data;
+
+    public void InjectData(CellData data)
+    {
+        _data = data;
+    }
+
     public bool IsEmpty()
     {
         return _item == null;

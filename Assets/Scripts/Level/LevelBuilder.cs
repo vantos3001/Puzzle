@@ -14,9 +14,13 @@ public static class LevelBuilder
         var inventory = SpawnInventory(levelData.InventoryItemDates);
         level.InjectInventory(inventory);
 
+        var playerPath = SpawnPath(levelData.Path, field.Cells);
+        level.InjectPlayerPath(playerPath);
+
         //TODO: use fieldSize for cellSpawn
+        
+        
         //TODO: use fieldSize points for CellSpawn
-        //TODO: add playerPath
 
         return level;
     }
@@ -29,6 +33,7 @@ public static class LevelBuilder
         foreach (var data in cellDates)
         {
             var cell = PlacementManager.CreateCell(data.CellPrefab, fieldGO.transform);
+            cell.InjectData(data);
 
             if (data.Item != null)
             {
@@ -58,6 +63,27 @@ public static class LevelBuilder
         }
         
         return new Inventory(itemList);
+    }
+
+    private static Path SpawnPath(PathData data, List<Cell> cells)
+    {
+        List<Vector3> points = new List<Vector3>();
+
+        foreach (var pointData in data.CellPoints)
+        {
+            var cell = cells.Find(c => c.Data.Coords.X == pointData.X && c.Data.Coords.Y == pointData.Y);
+
+            if (cell != null)
+            {
+                points.Add(cell.transform.position);
+            }
+            else
+            {
+                Debug.LogError("Not found Cell with point = " + pointData);
+            }
+        }
+        
+        return new Path(points);
     }
 
     public static Level BuildTestLevel()

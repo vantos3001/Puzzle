@@ -33,6 +33,8 @@ public class GameController : MonoBehaviour
         
         UiController.UpdateItemButtons(_level.Inventory.InventoryItems);
 
+        Player.InjectPath(_level.PlayerPath);
+
         Prepare();
     }
 

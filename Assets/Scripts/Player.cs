@@ -3,9 +3,9 @@
 public class Player : MonoBehaviour
 {
     private const float CHANGE_POINT_DISTANCE = 0.001f;
-    
-    [SerializeField] private Path Path;
 
+    private Path _path;
+    
     [SerializeField] private float Speed = 1;
 
     private bool _isMove;
@@ -14,7 +14,18 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        Path.OnPathEnded += OnPathEnded;
+        
+    }
+
+    public void InjectPath(Path path)
+    {
+        if (_path != null)
+        {
+            _path.OnPathEnded -= OnPathEnded;
+        }
+        
+        _path = path;
+        _path.OnPathEnded += OnPathEnded;
     }
 
     private void Update()
@@ -49,21 +60,21 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        var point = Path.CurrentPoint;
-        var distance = (point.position - transform.position).magnitude;
+        var point = _path.CurrentPoint;
+        var distance = (point - transform.position).magnitude;
         
         if (distance < CHANGE_POINT_DISTANCE)
         {
-            Path.ChangePoint();
-            point = Path.CurrentPoint;
-            distance = (point.position - transform.position).magnitude;
+            _path.ChangePoint();
+            point = _path.CurrentPoint;
+            distance = (point - transform.position).magnitude;
         }
         
         var deltaDistance = Time.deltaTime * Speed;
 
         var t = deltaDistance / distance;
 
-        transform.position = Vector3.Lerp(transform.position, point.transform.position, t);
+        transform.position = Vector3.Lerp(transform.position, point, t);
     }
 
     private void OnPathEnded()
@@ -74,6 +85,6 @@ public class Player : MonoBehaviour
 
     private void OnDestroy()
     {
-        Path.OnPathEnded -= OnPathEnded;
+        _path.OnPathEnded -= OnPathEnded;
     }
 }
