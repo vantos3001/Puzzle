@@ -1,6 +1,6 @@
 ﻿
 public class ItemData
 {
-    public InventoryItemType Type;
+    public ItemType Type;
     public string ItemPrefab;
 }

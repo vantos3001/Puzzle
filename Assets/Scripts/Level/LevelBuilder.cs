@@ -102,7 +102,7 @@ public static class LevelBuilder
         {
             Data = new InventoryItemData
             {
-                Type = InventoryItemType.Wall,
+                Type = ItemType.Wall,
                 IconName = "wall_icon",
                 ItemPrefab = "WallItem"
             }
@@ -111,7 +111,7 @@ public static class LevelBuilder
         {
             Data = new InventoryItemData
             {
-                Type = InventoryItemType.Wall,
+                Type = ItemType.Wall,
                 IconName = "wall_icon",
                 ItemPrefab = "WallItem"
             }
@@ -124,9 +124,9 @@ public static class LevelBuilder
     {
         var cellDates = new List<CellData>();
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 10; i++)
         {
-            for (int j = 0; j < 5; j++)
+            for (int j = 0; j < 10; j++)
             {
                 var data = new CellData();
                 data.Coords = new PointData(i, j);
@@ -138,7 +138,16 @@ public static class LevelBuilder
                     data.Item = new ItemData
                     {
                         ItemPrefab = "WallItem",
-                        Type = InventoryItemType.Wall
+                        Type = ItemType.Wall
+                    };
+                }
+                
+                if (i == 5 && j == 7)
+                {
+                    data.Item = new ItemData
+                    {
+                        ItemPrefab = "ShootItem",
+                        Type = ItemType.Shoot
                     };
                 }
                 
@@ -152,12 +161,17 @@ public static class LevelBuilder
     private static PathData GetTestPath()
     {
         var data = new PathData();
-        data.CellPoints.Add(new PointData(0, 0));
-        data.CellPoints.Add(new PointData(0, 1));
-        data.CellPoints.Add(new PointData(1, 1));
-        data.CellPoints.Add(new PointData(2, 1));
-        data.CellPoints.Add(new PointData(3, 1));
-        data.CellPoints.Add(new PointData(4, 1));
+        data.CellPoints.Add(new PointData(0, 4));
+        data.CellPoints.Add(new PointData(1, 4));
+        data.CellPoints.Add(new PointData(2, 4));
+        data.CellPoints.Add(new PointData(3, 4));
+        data.CellPoints.Add(new PointData(4, 4));
+        data.CellPoints.Add(new PointData(5, 4));
+        data.CellPoints.Add(new PointData(6, 4));
+        data.CellPoints.Add(new PointData(6, 5));
+        data.CellPoints.Add(new PointData(7, 5));
+        data.CellPoints.Add(new PointData(8, 5));
+        data.CellPoints.Add(new PointData(9, 5));
 
         return data;
     }

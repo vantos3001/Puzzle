@@ -39,7 +39,7 @@ public class Cell : MonoBehaviour, IDroppable
 
     public bool SetItem(ItemData itemData)
     {
-        if (PlacementManager.Place(itemData.ItemPrefab, transform.position, out Item item))
+        if (PlacementManager.Place(itemData.ItemPrefab, transform.position, out Item item, transform))
         {
             _item = item;
                 

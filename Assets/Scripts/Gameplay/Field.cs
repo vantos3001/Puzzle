@@ -5,7 +5,7 @@ public class Field : MonoBehaviour
 {
     private List<Cell> _cells;
 
-    private Vector3 _startPoint = Vector3.zero;
+    private Vector3 _startPoint = new Vector3(-2.4f, -1.8f);
     private float _cellSize = 0.5f;
 
     public List<Cell> Cells => _cells;

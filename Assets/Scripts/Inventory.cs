@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 
-public enum InventoryItemType
+public enum ItemType
 {
     Wall,
+    Water,
+    Shoot,
 }
 
 public class Inventory
