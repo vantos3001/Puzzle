@@ -83,7 +83,7 @@ public static class LevelBuilder
 
     public static Player SpawnPlayer(PlayerData playerData, Level level)
     {
-        var cell = level.Field.GetCell(playerData.StartPoint);
+        var cell = level.Field.GetCell(level.PlayerStartPoint);
         var player = PlacementManager.CreatePlayer(playerData.PlayerPrefab, cell.transform.position);
         
         player.InjectPath(level.PlayerPath);
@@ -98,16 +98,19 @@ public static class LevelBuilder
 
     public static Level BuildTestLevel()
     {
-        // var data = new LevelData
-        // {
-        //     InventoryItemDates = GetTestItems().ConvertAll(item => item.Data),
-        //     FieldSize = new Vector2(5, 5),
-        //     StartFieldPoint = new Vector2(10, 10),
-        //     CellDates = GetTestCells(),
-        //     Path = GetTestPath()
-        // };
+        var data = new LevelData
+        {
+            InventoryItemDates = GetTestItems().ConvertAll(item => item.Data),
+            FieldSize = new Vector2(5, 5),
+            StartFieldPoint = new Vector2(10, 10),
+            CellDates = GetTestCells(),
+            PlayerStartPoint = new PointData(0, 4),
+            Path = GetTestPath()
+        };
 
-        var data = DataManager.LoadLevelData("testFile");
+        // var data = DataManager.LoadLevelData("testFile");
+        // SaveManager.SaveJson(data, "testFile");
+        
         
         return BuildLevel(data);
     }
@@ -198,7 +201,6 @@ public static class LevelBuilder
         var data = new PlayerData()
         {
             PlayerPrefab = "DefaultPlayer",
-            StartPoint = new PointData(0, 4)
         };
 
         return data;

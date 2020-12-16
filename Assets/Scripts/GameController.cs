@@ -32,6 +32,7 @@ public class GameController : MonoBehaviour
     {
         var levelData = DataManager.LoadLevelData(TestLevelName);
         _level = LevelBuilder.BuildLevel(levelData);
+        // _level = LevelBuilder.BuildTestLevel();
         
         _player = LevelBuilder.SpawnTestPlayer(_level);
         

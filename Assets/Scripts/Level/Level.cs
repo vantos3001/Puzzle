@@ -13,6 +13,8 @@ public class Level
     private Path _playerPath;
     public Path PlayerPath => _playerPath;
 
+    public PointData PlayerStartPoint => _levelData.PlayerStartPoint;
+
     public Level(LevelData levelData)
     {
         _levelData = levelData;
