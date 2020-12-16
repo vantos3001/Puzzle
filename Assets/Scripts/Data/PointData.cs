@@ -1,18 +1,15 @@
 ﻿
-using System.Collections.Generic;
-using UnityEngine;
+using System;
 
+[Serializable]
 public class PointData
 {
-    private int _x;
-    public int X => _x;
-    
-    private int _y;
-    public int Y => _y;
+    public int X;
+    public int Y;
 
     public PointData(int x, int y)
     {
-        _x = x;
-        _y = y;
+        X = x;
+        Y = y;
     }
 }

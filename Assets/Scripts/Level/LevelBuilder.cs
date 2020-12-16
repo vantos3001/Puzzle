@@ -98,15 +98,17 @@ public static class LevelBuilder
 
     public static Level BuildTestLevel()
     {
-        var data = new LevelData
-        {
-            InventoryItemDates = GetTestItems().ConvertAll(item => item.Data),
-            FieldSize = new Vector2(5, 5),
-            StartFieldPoint = new Vector2(10, 10),
-            CellDates = GetTestCells(),
-            Path = GetTestPath()
-        };
+        // var data = new LevelData
+        // {
+        //     InventoryItemDates = GetTestItems().ConvertAll(item => item.Data),
+        //     FieldSize = new Vector2(5, 5),
+        //     StartFieldPoint = new Vector2(10, 10),
+        //     CellDates = GetTestCells(),
+        //     Path = GetTestPath()
+        // };
 
+        var data = DataManager.LoadLevelData("testFile");
+        
         return BuildLevel(data);
     }
 

@@ -1,5 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
 using UnityEngine;
 
 public static class DataManager
@@ -79,5 +80,32 @@ public static class DataManager
         }
 
         return prefab;
+    }
+
+    public static LevelData LoadLevelData(string levelName)
+    {
+        var path = $"Assets/Resources/Levels/{levelName}.json";
+
+        LevelData levelData = null;
+        
+        if (File.Exists(path))
+        {
+            var json = File.ReadAllText(path);
+
+            levelData = JsonConvert.DeserializeObject<LevelData>(json);
+
+            if (levelData == null)
+            {
+                Debug.LogError("levelData is null from file = " + levelName);
+
+            }
+        }
+        else
+        {
+            
+            Debug.Log("Not found Level with name = " + levelName);
+        }
+
+        return levelData;
     }
 }
