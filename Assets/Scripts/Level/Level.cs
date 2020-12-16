@@ -5,6 +5,7 @@ public class Level
     private LevelData _levelData;
 
     private Field _field;
+    public Field Field => _field;
 
     private Inventory _inventory;
     public Inventory Inventory => _inventory;

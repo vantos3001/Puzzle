@@ -14,7 +14,7 @@ public static class LevelBuilder
         var inventory = SpawnInventory(levelData.InventoryItemDates);
         level.InjectInventory(inventory);
 
-        var playerPath = SpawnPath(levelData.Path, field.Cells);
+        var playerPath = SpawnPath(levelData.Path, field);
         level.InjectPlayerPath(playerPath);
 
         return level;
@@ -60,13 +60,13 @@ public static class LevelBuilder
         return new Inventory(itemList);
     }
 
-    private static Path SpawnPath(PathData data, List<Cell> cells)
+    private static Path SpawnPath(PathData data, Field field)
     {
         List<Vector3> points = new List<Vector3>();
 
         foreach (var pointData in data.CellPoints)
         {
-            var cell = cells.Find(c => c.Data.Coords.X == pointData.X && c.Data.Coords.Y == pointData.Y);
+            var cell = field.GetCell(pointData);
 
             if (cell != null)
             {
@@ -79,6 +79,21 @@ public static class LevelBuilder
         }
         
         return new Path(points);
+    }
+
+    public static Player SpawnPlayer(PlayerData playerData, Level level)
+    {
+        var cell = level.Field.GetCell(playerData.StartPoint);
+        var player = PlacementManager.CreatePlayer(playerData.PlayerPrefab, cell.transform.position);
+        
+        player.InjectPath(level.PlayerPath);
+
+        return player;
+    }
+    
+    public static Player SpawnTestPlayer(Level level)
+    {
+        return SpawnPlayer(GetTestPlayer(), level);
     }
 
     public static Level BuildTestLevel()
@@ -172,6 +187,17 @@ public static class LevelBuilder
         data.CellPoints.Add(new PointData(7, 5));
         data.CellPoints.Add(new PointData(8, 5));
         data.CellPoints.Add(new PointData(9, 5));
+
+        return data;
+    }
+
+    private static PlayerData GetTestPlayer()
+    {
+        var data = new PlayerData()
+        {
+            PlayerPrefab = "DefaultPlayer",
+            StartPoint = new PointData(0, 4)
+        };
 
         return data;
     }

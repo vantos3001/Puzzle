@@ -34,4 +34,19 @@ public static class PlacementManager
         
         throw new Exception("Not found cellPrefab = " + cellPrefabName);
     }
+
+    public static Player CreatePlayer(string playerPrefabName, Vector3 position)
+    {
+        var playerPrefab = DataManager.GetPrefab(playerPrefabName, "Prefabs");
+
+        if (playerPrefab != null)
+        {
+            var playerGO = Object.Instantiate(playerPrefab);
+            playerGO.transform.position = position;
+            var player = playerGO.GetComponent<Player>();
+            return player;
+        }
+        
+        throw new Exception("Not found playerPrefab = " + playerPrefabName);
+    }
 }

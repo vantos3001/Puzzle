@@ -12,11 +12,11 @@ public enum GameState
 public class GameController : MonoBehaviour
 {
     [SerializeField] private UIController UiController;
-    [SerializeField] private Player Player;
     
     private GameState _gameState = GameState.None;
 
     private Level _level;
+    private Player _player;
 
     private void Awake()
     {
@@ -30,10 +30,10 @@ public class GameController : MonoBehaviour
     private void LoadGame()
     {
         _level = LevelBuilder.BuildTestLevel();
+        _player = LevelBuilder.SpawnTestPlayer(_level);
         
         UiController.UpdateItemButtons(_level.Inventory.InventoryItems);
 
-        Player.InjectPath(_level.PlayerPath);
 
         Prepare();
     }
@@ -43,7 +43,7 @@ public class GameController : MonoBehaviour
         if (_gameState != GameState.Play)
         {
             ChangeState(GameState.Preparation);
-            Player.Stop();
+            _player.Stop();
         }
     }
 
@@ -52,7 +52,7 @@ public class GameController : MonoBehaviour
         if (_gameState == GameState.Preparation)
         {
             ChangeState(GameState.Play);
-            Player.StartMove();
+            _player.StartMove();
         }
     }
 
