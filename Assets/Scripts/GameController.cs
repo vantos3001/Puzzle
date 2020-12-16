@@ -12,6 +12,7 @@ public enum GameState
 public class GameController : MonoBehaviour
 {
     [SerializeField] private UIController UiController;
+    [SerializeField] private string TestLevelName;
     
     private GameState _gameState = GameState.None;
 
@@ -29,7 +30,9 @@ public class GameController : MonoBehaviour
 
     private void LoadGame()
     {
-        _level = LevelBuilder.BuildTestLevel();
+        var levelData = DataManager.LoadLevelData(TestLevelName);
+        _level = LevelBuilder.BuildLevel(levelData);
+        
         _player = LevelBuilder.SpawnTestPlayer(_level);
         
         UiController.UpdateItemButtons(_level.Inventory.InventoryItems);
