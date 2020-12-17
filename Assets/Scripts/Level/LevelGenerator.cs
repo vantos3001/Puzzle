@@ -17,6 +17,26 @@ public static class LevelGenerator
         };
     }
 
+    public static LevelData CreateTempLevelData(int horizontalLength, int verticalLength)
+    {
+        var fieldSize = new Vector2(horizontalLength, verticalLength);
+        var cellDates = GetTempCells(fieldSize);
+        
+        var pathData = new PathData();
+        pathData.CellPoints.Add(new PointData(0, 4));
+        pathData.CellPoints.Add(new PointData(1, 4));
+        
+        return new LevelData
+        {
+            InventoryItemDates = GetTestItems().ConvertAll(item => item.Data),
+            FieldSize = fieldSize,
+            StartFieldPoint = new Vector2(10, 10),
+            CellDates = cellDates,
+            PlayerStartPoint = new PointData(0, 4),
+            Path = pathData
+        };
+    }
+
     private static List<InventoryItem> GetTestItems()
     {
         var inventoryItems = new List<InventoryItem>();
@@ -40,6 +60,26 @@ public static class LevelGenerator
         });
 
         return inventoryItems;
+    }
+
+    private static List<CellData> GetTempCells(Vector2 fieldSize)
+    {
+        var cellDates = new List<CellData>();
+        
+        for (int y = 0; y < fieldSize.y; y++)
+        {
+            for (int x = 0; x < fieldSize.x; x++)
+            {
+                var data = new CellData();
+                data.Coords = new PointData(x, y);
+                data.CellPrefab = "Cell";
+                data.Background = "Default";
+                
+                cellDates.Add(data);
+            }
+        }
+        
+        return cellDates;
     }
 
     private static List<CellData> GetTestCells()

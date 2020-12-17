@@ -78,7 +78,7 @@ namespace FullMetalMonsters.Tools
             }
             else
             {
-                var levelData = LevelGenerator.CreateTestLevelData();
+                var levelData = LevelGenerator.CreateTempLevelData(_x,  _y);
                 SaveManager.SaveLevel(levelData, _configName);
             }
         }
