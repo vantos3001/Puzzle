@@ -5,7 +5,7 @@ using UnityEngine;
 
 public static class SaveManager
 {
-    public static void SaveJson(LevelData levelData, string levelName)
+    public static void SaveLevel(LevelData levelData, string levelName)
     {
         string json = JsonConvert.SerializeObject(levelData);
 
