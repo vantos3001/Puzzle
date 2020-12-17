@@ -23,14 +23,17 @@ public class Cell : MonoBehaviour, IDroppable
 
         if (itemButton != null)
         {
-            if (_item == null)
+            if (!_data.IsAlwaysLocked)
             {
-                return true;
-            }
-            else
-            {
-                //TODO: try craft
-                //CraftManager.Craft();
+                if (IsEmpty()) 
+                {
+                    return true;
+                }
+                else
+                {
+                    //TODO: try craft
+                    //CraftManager.Craft();
+                }
             }
         }
 
@@ -39,6 +42,8 @@ public class Cell : MonoBehaviour, IDroppable
 
     public bool SetItem(ItemData itemData)
     {
+        if (_data.IsAlwaysLocked){return false;}
+        
         if (PlacementManager.Place(itemData.ItemPrefab, transform.position, out Item item, transform))
         {
             _item = item;

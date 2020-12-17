@@ -7,5 +7,7 @@ public class CellData
     public string CellPrefab;
     public string Background;
 
+    public bool IsAlwaysLocked;
+
     public ItemData Item;
 }

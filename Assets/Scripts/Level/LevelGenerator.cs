@@ -94,6 +94,11 @@ public static class LevelGenerator
                 data.Coords = new PointData(i, j);
                 data.CellPrefab = "Cell";
                 data.Background = "Default";
+                
+                if (i == 0 && j == 0)
+                {
+                    data.IsAlwaysLocked = true;
+                }
 
                 if (i == 2 && j == 0)
                 {
