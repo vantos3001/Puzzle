@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b919a0deebcbfff4ebf09df1e4b6e666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsKillPlayer: 1
   ProjectileSpeed: 1
   SpawnTime: 1
   ProjectilePrefab: {fileID: 8669314158545953858, guid: 239a22629304d0b44950d600fc2ec6dd,

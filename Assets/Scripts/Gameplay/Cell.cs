@@ -44,7 +44,7 @@ public class Cell : MonoBehaviour, IDroppable
     {
         if (_data.IsAlwaysLocked){return false;}
         
-        if (PlacementManager.Place(itemData.ItemPrefab, transform.position, out Item item, transform))
+        if (PlacementManager.Place(itemData, transform.position, out Item item, transform))
         {
             _item = item;
                 

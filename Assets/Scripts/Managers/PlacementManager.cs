@@ -4,15 +4,16 @@ using Object = UnityEngine.Object;
 
 public static class PlacementManager
 {
-    public static bool Place(string itemPrefabName, Vector3 position, out Item item, Transform parent)
+    public static bool Place(ItemData itemData, Vector3 position, out Item item, Transform parent)
     {
-        var itemPrefab = DataManager.GetItemPrefab(itemPrefabName);
+        var itemPrefab = DataManager.GetItemPrefab(itemData.ItemPrefab);
 
         if (itemPrefab != null)
         {
             var itemGO = GameObject.Instantiate(itemPrefab, parent, true);
             itemGO.transform.position = position;
             item = itemGO.GetComponent<Item>();
+            item.InjectData(itemData);
             return true;
         }
 

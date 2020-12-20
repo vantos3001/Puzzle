@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 1544666997963652825}
   - component: {fileID: 1544666997963652826}
   - component: {fileID: 1544666997963652827}
-  - component: {fileID: 1544666997963652824}
+  - component: {fileID: 2930368800861601162}
   - component: {fileID: 1544666997963652831}
   m_Layer: 0
-  m_Name: Player
+  m_Name: DefaultPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,8 +96,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 1
---- !u!61 &1544666997963652824
-BoxCollider2D:
+--- !u!58 &2930368800861601162
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -110,18 +110,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 0.5
 --- !u!50 &1544666997963652831
 Rigidbody2D:
   serializedVersion: 4

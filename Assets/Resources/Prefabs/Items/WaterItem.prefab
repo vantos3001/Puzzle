@@ -120,3 +120,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c3895df05aff13499fd9a418251b57b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsKillPlayer: 1
