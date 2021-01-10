@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Game.Managers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,9 @@ public class UIController : MonoBehaviour
     {
         EventManager.OnInventoryItemPlaced += OnOnInventoryItemPlaced;
         _tapToStart.onClick.AddListener(OnTapToStartClicked);
+        
+        _winButton.onClick.AddListener(OnWinButtonClicked);
+        _loseButton.onClick.AddListener(OnLoseButtonClicked);
     }
 
     public void UpdateItemButtons(List<InventoryItem> inventoryItems)
@@ -26,10 +30,20 @@ public class UIController : MonoBehaviour
     {
         _winButton.gameObject.SetActive(true);
     }
+    
+    private void HideWin()
+    {
+        _winButton.gameObject.SetActive(false);
+    }
 
     public void ShowLose()
     {
         _loseButton.gameObject.SetActive(true);
+    }
+    
+    private void HideLose()
+    {
+        _loseButton.gameObject.SetActive(false);
     }
 
     private void OnOnInventoryItemPlaced()
@@ -46,9 +60,24 @@ public class UIController : MonoBehaviour
         EventManager.NotifyTapToStartClicked();
     }
 
+    private void OnWinButtonClicked()
+    {
+        HideWin();
+        CustomSceneManager.LoadGameplayScene();
+    }
+
+    private void OnLoseButtonClicked()
+    {
+        HideLose();
+        CustomSceneManager.LoadGameplayScene();
+    }
+
     private void OnDestroy()
     {
         EventManager.OnInventoryItemPlaced -= OnOnInventoryItemPlaced;
         _tapToStart.onClick.RemoveListener(OnTapToStartClicked);
+        
+        _winButton.onClick.RemoveListener(OnWinButtonClicked);
+        _loseButton.onClick.RemoveListener(OnLoseButtonClicked);
     }
 }
