@@ -40,9 +40,9 @@ public class Cell : MonoBehaviour, IDroppable
         return false;
     }
 
-    public bool SetItem(ItemData itemData)
+    public bool SetItem(ItemData itemData, bool force)
     {
-        if (_data.IsAlwaysLocked){return false;}
+        if (_data.IsAlwaysLocked && !force){return false;}
         
         if (PlacementManager.Place(itemData, transform.position, out Item item, transform))
         {
@@ -62,7 +62,7 @@ public class Cell : MonoBehaviour, IDroppable
         {
             var itemButton = draggable as ItemButton;
             
-            return SetItem(itemButton.Item.Data);
+            return SetItem(itemButton.Item.Data, false);
         }
 
         return false;

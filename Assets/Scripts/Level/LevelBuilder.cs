@@ -32,7 +32,7 @@ public static class LevelBuilder
 
             if (data.Item != null)
             {
-                cell.SetItem(data.Item);
+                cell.SetItem(data.Item, true);
             }
             
             cells.Add(cell);
