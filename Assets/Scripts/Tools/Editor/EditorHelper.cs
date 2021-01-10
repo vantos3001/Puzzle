@@ -1,4 +1,5 @@
 ﻿using UnityEditor;
+using UnityEngine;
 
 namespace FullMetalMonsters.Meta
 {
@@ -9,6 +10,12 @@ namespace FullMetalMonsters.Meta
 		{
 			var levelData = LevelGenerator.CreateTestLevelData();
 			SaveManager.SaveLevel(levelData, "testFile");
+		}
+		
+		[MenuItem("Puzzle/Save/DeleteAll")]
+		public static void DeleteAll()
+		{
+			PlayerPrefs.DeleteAll();
 		}
 	}
 }
