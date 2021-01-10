@@ -2,9 +2,9 @@
 
 public enum ItemType
 {
-    Wall,
-    Water,
-    Shoot,
+    Wall = 0,
+    Water = 1,
+    Shoot = 2,
 }
 
 public class Inventory

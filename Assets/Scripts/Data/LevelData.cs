@@ -11,8 +11,6 @@ public class LevelData
     public Vector2 FieldSize;
     public Vector2 StartFieldPoint;
     public List<CellData> CellDates = new List<CellData>();
-
-    public PointData PlayerStartPoint;
     
     public PathData Path;
 }

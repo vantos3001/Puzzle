@@ -13,10 +13,10 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] private UIController UiController;
     [SerializeField] private string TestLevelName;
+    [SerializeField] private bool IsTestLevel = true;
     
     private GameState _gameState = GameState.None;
 
-    private Level _level;
     private Player _player;
 
     private void Awake()
@@ -30,15 +30,18 @@ public class GameController : MonoBehaviour
 
     private void LoadGame()
     {
-        var levelData = DataManager.LoadLevelData(TestLevelName);
-        // var levelData = LevelGenerator.CreateTestLevelData();
-
-        _level = LevelBuilder.BuildLevel(levelData);
+        if (IsTestLevel)
+        {
+            LevelManager.ChangeLevel(TestLevelName);
+        }
+        else
+        {
+            LevelManager.ChangeToNextLevel();
+        }
         
-        _player = LevelBuilder.SpawnTestPlayer(_level);
+        _player = LevelBuilder.SpawnTestPlayer(LevelManager.CurrentLevel);
         
-        UiController.UpdateItemButtons(_level.Inventory.InventoryItems);
-
+        UiController.UpdateItemButtons(LevelManager.CurrentLevel.Inventory.InventoryItems);
 
         Prepare();
     }
@@ -67,6 +70,11 @@ public class GameController : MonoBehaviour
         {
             ChangeState(GameState.Win);
             UiController.ShowWin();
+
+            if (!IsTestLevel)
+            {
+                LevelManager.FinishLevel();
+            }
         }
     }
 

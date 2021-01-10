@@ -12,7 +12,6 @@ public static class LevelGenerator
             FieldSize = new Vector2(5, 5),
             StartFieldPoint = new Vector2(10, 10),
             CellDates = GetTestCells(),
-            PlayerStartPoint = new PointData(0, 4),
             Path = GetTestPath()
         };
     }
@@ -32,7 +31,6 @@ public static class LevelGenerator
             FieldSize = fieldSize,
             StartFieldPoint = new Vector2(10, 10),
             CellDates = cellDates,
-            PlayerStartPoint = new PointData(0, 4),
             Path = pathData
         };
     }
