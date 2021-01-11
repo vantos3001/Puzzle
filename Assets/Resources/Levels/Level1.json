@@ -4,11 +4,6 @@
       "IconName": "wall_icon",
       "Type": 0,
       "ItemPrefab": "WallItem"
-    },
-    {
-      "IconName": "wall_icon",
-      "Type": 0,
-      "ItemPrefab": "WallItem"
     }
   ],
   "FieldSize": {
@@ -384,12 +379,12 @@
       "Item": null
     }
   ],
-  "PlayerStartPoint": {
-    "X": 0,
-    "Y": 4
-  },
-  "Path": {
+   "Path": {
     "CellPoints": [
+      {
+        "X": 0,
+        "Y": 2
+      },
       {
         "X": 1,
         "Y": 2
