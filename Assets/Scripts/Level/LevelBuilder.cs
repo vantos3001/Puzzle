@@ -8,7 +8,7 @@ public static class LevelBuilder
     {
         var level = new Level(levelData);
         
-        var field = SpawnField(levelData.CellDates);
+        var field = SpawnField(levelData.FieldSize, levelData.CellDates);
         level.InjectField(field);
         
         var inventory = SpawnInventory(levelData.InventoryItemDates);
@@ -20,7 +20,7 @@ public static class LevelBuilder
         return level;
     }
 
-    private static Field SpawnField(List<CellData> cellDates)
+    private static Field SpawnField(Vector2 fieldSize, List<CellData> cellDates)
     {
         var fieldPrefab = DataManager.GetPrefab("Field", "Prefabs");
         var fieldGO = Object.Instantiate(fieldPrefab);
@@ -39,7 +39,7 @@ public static class LevelBuilder
         }
 
         var field = fieldGO.GetComponent<Field>();
-        field.InjectCells(cells);
+        field.InjectCells(fieldSize, cells);
         
         return field;
     }

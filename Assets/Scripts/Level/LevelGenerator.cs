@@ -10,7 +10,6 @@ public static class LevelGenerator
         {
             InventoryItemDates = GetTestItems().ConvertAll(item => item.Data),
             FieldSize = new Vector2(5, 5),
-            StartFieldPoint = new Vector2(10, 10),
             CellDates = GetTestCells(),
             Path = GetTestPath()
         };
@@ -29,7 +28,6 @@ public static class LevelGenerator
         {
             InventoryItemDates = GetTestItems().ConvertAll(item => item.Data),
             FieldSize = fieldSize,
-            StartFieldPoint = new Vector2(10, 10),
             CellDates = cellDates,
             Path = pathData
         };
