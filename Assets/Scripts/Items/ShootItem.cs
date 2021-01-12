@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ProjectileDirection
+public enum Direction
 {
-    Left,
-    Right,
-    Down,
-    Up
+    Left = 0,
+    Right = 1,
+    Down = 2,
+    Up = 3
 }
 
 public class ShootItem : Item
@@ -21,12 +21,19 @@ public class ShootItem : Item
 
     [SerializeField] private Transform SpawnPoint;
 
-    [SerializeField]
-    private ProjectileDirection ProjectileDirection = ProjectileDirection.Down;
+    private Direction _direction = Direction.Down;
 
     private List<Projectile> Projectiles = new List<Projectile>();
 
     private float _currentTime = 0f;
+
+    protected override void OnDataChanged()
+    {
+        base.OnDataChanged();
+
+        _direction = Data.Direction;
+        RotateToDirection(transform, _direction);
+    }
 
     private void Update()
     {
@@ -47,6 +54,7 @@ public class ShootItem : Item
     {
         var projGO = Instantiate(ProjectilePrefab);
         projGO.transform.position = SpawnPoint.position;
+        RotateToDirection(projGO.transform, _direction);
         Projectiles.Add(projGO.GetComponent<Projectile>());
     }
 
@@ -56,7 +64,7 @@ public class ShootItem : Item
         
         foreach (var projectile in Projectiles)
         {
-            var newPos = projectile.transform.position + delta * GetDirection(ProjectileDirection);
+            var newPos = projectile.transform.position + delta * GetDirection(_direction);
             projectile.transform.position = newPos;
 
             if (projectile.IsStop || !IsOnScreen(projectile.transform.position))
@@ -74,21 +82,47 @@ public class ShootItem : Item
         toRemove.Clear();
     }
 
-    private Vector3 GetDirection(ProjectileDirection projectileDirection)
+    private Vector3 GetDirection(Direction direction)
     {
-        switch (projectileDirection)
+        switch (direction)
         {
-            case ProjectileDirection.Down:
+            case Direction.Down:
                 return new Vector3(0, -1, 0);
-            case ProjectileDirection.Up:
+            case Direction.Up:
                 return new Vector3(0, 1, 0);
-            case ProjectileDirection.Left:
+            case Direction.Left:
                 return new Vector3(-1, 0, 0);
-            case ProjectileDirection.Right:
+            case Direction.Right:
                 return new Vector3(1, 0, 0);
             default:
-                throw new Exception("not found projectileDirection = " + projectileDirection);
+                throw new Exception("not found projectileDirection = " + direction);
         }
+    }
+
+    private void RotateToDirection(Transform transform, Direction direction)
+    {
+        var rotateAngle = 0;
+
+        switch (direction)
+        {
+            case Direction.Down:
+                rotateAngle = -90;
+                break;
+            case Direction.Up:
+                rotateAngle = 90;
+                break;
+            case Direction.Left:
+                rotateAngle = 180;
+                break;
+            case Direction.Right:
+                rotateAngle = 0;
+                break;
+            default:
+                throw new Exception("not found projectileDirection = " + direction);
+        }
+
+        var oldRotation = transform.rotation;
+        transform.Rotate(oldRotation.x, oldRotation.x, rotateAngle);
     }
 
     private bool IsOnScreen(Vector3 position)

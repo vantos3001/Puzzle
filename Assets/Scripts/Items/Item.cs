@@ -7,10 +7,18 @@ public class Item : MonoBehaviour, IItem
     public bool IsKillPlayer;
 
     private ItemData _data;
+    protected ItemData Data => _data;
 
     public void InjectData(ItemData data)
     {
         _data = data;
+        
+        OnDataChanged();
+    }
+
+    protected virtual void OnDataChanged()
+    {
+        
     }
     
     protected virtual void OnTriggerEnter2D(Collider2D other)

@@ -130,4 +130,4 @@ MonoBehaviour:
   ProjectilePrefab: {fileID: 8669314158545953858, guid: 239a22629304d0b44950d600fc2ec6dd,
     type: 3}
   SpawnPoint: {fileID: 3331145127555953134}
-  ProjectileDirection: 2
+  direction: 1

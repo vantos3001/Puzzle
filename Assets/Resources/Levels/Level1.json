@@ -285,7 +285,8 @@
       "IsAlwaysLocked": true,
       "Item": {
       "Type": 2,
-      "ItemPrefab": "ShootItem"
+      "ItemPrefab": "ShootItem",
+      "Direction": "Down"
     }
     },
     {
