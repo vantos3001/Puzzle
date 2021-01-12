@@ -21,7 +21,7 @@
         "Y": 0
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "Grass",
       "IsAlwaysLocked": false,
       "Item": null
     },

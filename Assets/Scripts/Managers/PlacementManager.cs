@@ -22,18 +22,19 @@ public static class PlacementManager
         return false;
     }
 
-    public static Cell CreateCell(string cellPrefabName, Transform parent)
+    public static Cell CreateCell(CellData data, Transform parent)
     {
-        var cellPrefab = DataManager.GetPrefab(cellPrefabName, "Prefabs");
+        var cellPrefab = DataManager.GetPrefab(data.CellPrefab, "Prefabs");
 
         if (cellPrefab != null)
         {
             var itemGO = Object.Instantiate(cellPrefab, parent, true);
             var cell = itemGO.GetComponent<Cell>();
+            cell.Background.sprite = DataManager.GetCellBackground(data.Background);
             return cell;
         }
         
-        throw new Exception("Not found cellPrefab = " + cellPrefabName);
+        throw new Exception("Not found cellPrefab = " + data.CellPrefab);
     }
 
     public static Player CreatePlayer(string playerPrefabName, Vector3 position)

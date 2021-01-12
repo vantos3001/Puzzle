@@ -2,6 +2,9 @@
 
 public class Cell : MonoBehaviour, IDroppable
 {
+    [SerializeField] private SpriteRenderer _background;
+    public SpriteRenderer Background => _background;
+    
     private Item _item;
 
     private CellData _data;

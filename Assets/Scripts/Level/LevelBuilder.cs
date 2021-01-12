@@ -27,7 +27,7 @@ public static class LevelBuilder
         var cells = new List<Cell>();
         foreach (var data in cellDates)
         {
-            var cell = PlacementManager.CreateCell(data.CellPrefab, fieldGO.transform);
+            var cell = PlacementManager.CreateCell(data, fieldGO.transform);
             cell.InjectData(data);
 
             if (data.Item != null)

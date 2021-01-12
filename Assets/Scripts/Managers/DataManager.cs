@@ -5,33 +5,48 @@ using UnityEngine;
 
 public static class DataManager
 {
+    private const string INVENTORY_ITEM_ICON_PATH = "InventoryItemIcons";
+    private const string CELL_BACKGROUND_PATH = "CellBackgrounds";
+    
     private static Dictionary<string, Sprite> _cachedInventoryItemIcons = new Dictionary<string, Sprite>();
     private static Dictionary<string, GameObject> _cachedItemPrefabs = new Dictionary<string, GameObject>();
     
-    private static Dictionary<string, GameObject> _cachedOtherPrefabs = new Dictionary<string, GameObject>();
+    private static Dictionary<string, Sprite> _cachedCellBackgrounds = new Dictionary<string, Sprite>();
     
-    public static Sprite GetInventoryItemIcons(string iconName)
-    {
-        Sprite icon = null;
+    private static Dictionary<string, GameObject> _cachedOtherPrefabs = new Dictionary<string, GameObject>();
 
-        if (_cachedInventoryItemIcons.TryGetValue(iconName, out icon))
+    public static Sprite GetSprite(string spriteName, string path, Dictionary<string, Sprite> cachedSprites)
+    {
+        Sprite sprite = null;
+
+        if (cachedSprites.TryGetValue(spriteName, out sprite))
         {
-            return icon;
+            return sprite;
         }
 
-        icon = Resources.Load<Sprite>($"InventoryItemIcons/{iconName}");
+        sprite = Resources.Load<Sprite>($"{path}/{spriteName}");
 
-        if (icon != null)
+        if (sprite != null)
         {
-            _cachedInventoryItemIcons.Add(iconName, icon);
-            return icon;
+            cachedSprites.Add(spriteName, sprite);
+            return sprite;
         }
         else
         {
-            Debug.LogError("Not found inventoryIcon with name = " + iconName);
+            Debug.LogError("Not found sprite with name = " + spriteName + "; Path = " + path);
         }
 
-        return icon;
+        return sprite;
+    }
+    
+    public static Sprite GetInventoryItemIcons(string iconName)
+    {
+        return GetSprite(iconName, INVENTORY_ITEM_ICON_PATH, _cachedInventoryItemIcons);
+    }
+
+    public static Sprite GetCellBackground(string backgroundName)
+    {
+        return GetSprite(backgroundName, CELL_BACKGROUND_PATH, _cachedCellBackgrounds);
     }
 
     public static GameObject GetItemPrefab(string prefabName)
