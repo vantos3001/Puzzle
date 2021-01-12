@@ -284,7 +284,7 @@
       "Background": "Default",
       "IsAlwaysLocked": true,
       "Item": {
-      "Type": 2,
+      "Type": "Shoot",
       "ItemPrefab": "ShootItem",
       "Direction": "Down"
     }
