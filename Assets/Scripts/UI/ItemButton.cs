@@ -41,6 +41,8 @@ public class ItemButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
         if (_item != null)
         {
             _dragAndDropController.StartDrag(this, LayerMask.GetMask("Field"));
+            EventManager.NotifyInventoryItemMoveStarted(this);
+            
             Debug.Log("OnPointerDown");
             //TODO: move sprite
         }
@@ -56,6 +58,7 @@ public class ItemButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
             worldPosition.z = 0;
 
             var target = _dragAndDropController.EndDrag();
+            EventManager.NotifyInventoryItemMoveEnded();
 
             if (target != null)
             {

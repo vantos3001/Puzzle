@@ -3,6 +3,9 @@
 public class Cell : MonoBehaviour, IDroppable
 {
     [SerializeField] private SpriteRenderer _background;
+
+    [SerializeField] private CellForeground _cellForeground;
+        
     public SpriteRenderer Background => _background;
     
     private Item _item;
@@ -69,5 +72,26 @@ public class Cell : MonoBehaviour, IDroppable
         }
 
         return false;
+    }
+
+    public void UpdateForeground(bool isShow, IDraggable draggable)
+    {
+        if(_cellForeground.IsShow == isShow){return;}
+
+        if (isShow && draggable != null)
+        {
+            if (CanDrop(draggable))
+            {
+                _cellForeground.ShowUnlockForeground();
+            }
+            else
+            {
+                _cellForeground.ShowLockForeground();
+            }
+        }
+        else
+        {
+            _cellForeground.HideForeground();
+        }
     }
 }

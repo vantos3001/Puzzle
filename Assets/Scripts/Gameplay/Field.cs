@@ -23,6 +23,12 @@ public class Field : MonoBehaviour
         UpdateFieldPosition();
     }
 
+    private void Awake()
+    {
+        EventManager.OnInventoryItemMoveStarted += ShowCellForegrounds;
+        EventManager.OnInventoryItemMoveEnded += HideCellForegrounds;
+    }
+
     public Cell GetCell(PointData pointData)
     {
         var cell = _cells.Find(c => c.Data.Coords.X == pointData.X && c.Data.Coords.Y == pointData.Y);
@@ -87,5 +93,29 @@ public class Field : MonoBehaviour
     private float GetCellSize()
     {
         return _referenceCellWidth / PIXELS_PER_UNIT;
+    }
+
+    private void ShowCellForegrounds(IDraggable draggable)
+    {
+        if(draggable == null){return;}
+        
+        foreach (var cell in _cells)
+        {
+            cell.UpdateForeground(true, draggable);
+        }
+    }
+
+    private void HideCellForegrounds()
+    {
+        foreach (var cell in _cells)
+        {
+            cell.UpdateForeground(false, null);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.OnInventoryItemMoveStarted -= ShowCellForegrounds;
+        EventManager.OnInventoryItemMoveEnded -= HideCellForegrounds;
     }
 }
