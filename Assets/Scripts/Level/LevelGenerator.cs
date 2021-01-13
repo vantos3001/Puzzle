@@ -36,24 +36,15 @@ public static class LevelGenerator
     private static List<InventoryItem> GetTestItems()
     {
         var inventoryItems = new List<InventoryItem>();
-        inventoryItems.Add(new InventoryItem
-        {
-            Data = new InventoryItemData
-            {
-                Type = ItemType.Wall,
-                IconName = "wall_icon",
-                ItemPrefab = "WallItem"
-            }
-        });
-        inventoryItems.Add(new InventoryItem
-        {
-            Data = new InventoryItemData
-            {
-                Type = ItemType.Wall,
-                IconName = "wall_icon",
-                ItemPrefab = "WallItem"
-            }
-        });
+        inventoryItems.Add(new InventoryItem(
+            new InventoryItemData
+                {
+                    Type = ItemType.Wall,
+                    IconName = "wall_icon",
+                    ItemPrefab = "WallItem",
+                    Count = 2
+                }
+            ));
 
         return inventoryItems;
     }

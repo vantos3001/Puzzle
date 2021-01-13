@@ -29,7 +29,7 @@ public class ItemButtons : MonoBehaviour
     {
         foreach (var itemButton in _itemButtons)
         {
-            if (!itemButton.IsFree())
+            if (!itemButton.IsItemFree())
             {
                 return false;
             }

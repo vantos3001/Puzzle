@@ -50,10 +50,7 @@ public static class LevelBuilder
 
         foreach (var data in inventoryItemDates)
         {
-            var item = new InventoryItem
-            {
-                Data = data
-            };
+            var item = new InventoryItem(data);
             itemList.Add(item);
         }
         

@@ -3,12 +3,8 @@
     {
       "IconName": "wall_icon",
       "Type": 0,
-      "ItemPrefab": "WallItem"
-    },
-    {
-      "IconName": "wall_icon",
-      "Type": 0,
-      "ItemPrefab": "WallItem"
+      "ItemPrefab": "WallItem",
+      "Count": 2
     }
   ],
   "FieldSize": {

@@ -24,21 +24,22 @@ public class ItemButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
         Icon.sprite = DataManager.GetInventoryItemIcons(item.Data.IconName);
     }
 
-    public bool IsFree()
+    public bool IsItemFree()
     {
-        return _item == null;
+        return _item == null || _item.IsFree();
     }
     
     public void Clear()
     {
-        _item = null;
-
-        Icon.sprite = null;
+        if (IsItemFree())
+        {
+            Icon.sprite = null;
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (_item != null)
+        if (!IsItemFree())
         {
             _dragAndDropController.StartDrag(this, LayerMask.GetMask("Field"));
             EventManager.NotifyInventoryItemMoveStarted(this);
@@ -50,7 +51,7 @@ public class ItemButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (_item != null)
+        if (!IsItemFree())
         {
             Debug.Log("OnPointerUp");
 
@@ -64,6 +65,7 @@ public class ItemButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
             {
                 if (target.TryDrop(this))
                 {
+                    _item.CurrentCount--;
                     Clear();
                     EventManager.NotifyInventoryItemPlaced();
                 }
