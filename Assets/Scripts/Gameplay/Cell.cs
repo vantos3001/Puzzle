@@ -73,6 +73,11 @@ public class Cell : MonoBehaviour, IDroppable
 
         return false;
     }
+    
+    public void UpdateForegroundHighlight(bool isHighlight)
+    {
+        _cellForeground.Highlight(isHighlight);
+    }
 
     public void UpdateForeground(bool isShow, IDraggable draggable)
     {

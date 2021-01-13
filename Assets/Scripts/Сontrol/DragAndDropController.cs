@@ -41,8 +41,26 @@ public class DragAndDropController : MonoBehaviour
         
         if (_target != obj)
         {
+            var oldTarget = _target;
+            var newTarget = obj;
+            
+            UpdateHighlightCellForegrounds(newTarget as Cell, oldTarget as Cell);
+            
             Debug.Log("target = " + obj);
             _target = obj;
+        }
+    }
+
+    private void UpdateHighlightCellForegrounds(Cell newCell, Cell oldCell)
+    {
+        if (newCell != null)
+        {
+            newCell.UpdateForegroundHighlight(true);
+        }
+
+        if (oldCell != null)
+        {
+            oldCell.UpdateForegroundHighlight(false);
         }
     }
 
@@ -50,6 +68,8 @@ public class DragAndDropController : MonoBehaviour
     {
         _current = null;
         _isDragging = false;
+        
+        UpdateHighlightCellForegrounds(null, _target as Cell);
 
         return _target;
     }

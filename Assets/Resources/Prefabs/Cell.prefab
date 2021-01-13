@@ -194,7 +194,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ef41fcb769d3bec44975aca281ed5dc2, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.8355696, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -217,6 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 2975799358388612470}
-  UnlockColor: {r: 0.0025007725, g: 1, b: 0, a: 0.39215687}
-  LockColor: {r: 1, g: 0, b: 0, a: 0.39215687}
+  UnlockColor: {r: 0.0025007725, g: 1, b: 0, a: 0.2509804}
+  LockColor: {r: 1, g: 0, b: 0, a: 0.2509804}
+  DefaultAlpha: 0.25
   HighlightAlpha: 0.5

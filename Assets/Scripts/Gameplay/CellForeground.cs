@@ -7,10 +7,19 @@ public class CellForeground : MonoBehaviour
     [SerializeField] private Color UnlockColor;
     [SerializeField] private Color LockColor;
 
+    [SerializeField] private float DefaultAlpha;
     [SerializeField] private float HighlightAlpha;
 
     private bool _isShow;
     public bool IsShow => _isShow;
+
+    private bool _isHighlight;
+
+    private void Awake()
+    {
+        UnlockColor.a = DefaultAlpha;
+        LockColor.a = DefaultAlpha;
+    }
 
     public void ShowLockForeground()
     {
@@ -40,5 +49,16 @@ public class CellForeground : MonoBehaviour
         
         _isShow = false;
         _spriteRenderer.enabled = false;
+    }
+
+    public void Highlight(bool isHighlight)
+    {
+        if(_isHighlight == isHighlight) {return;}
+        
+        _isHighlight = isHighlight;
+
+        var oldColor = _spriteRenderer.color;
+        
+        _spriteRenderer.color = new Color(oldColor.r, oldColor.g, oldColor.b, isHighlight ? HighlightAlpha : DefaultAlpha);
     }
 }
