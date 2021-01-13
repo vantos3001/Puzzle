@@ -12,6 +12,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private Button _winButton;
     [SerializeField] private Button _loseButton;
 
+    [SerializeField] private UIHeader _uiHeader;
+
     private void Awake()
     {
         EventManager.OnInventoryItemPlaced += OnOnInventoryItemPlaced;
@@ -19,6 +21,8 @@ public class UIController : MonoBehaviour
         
         _winButton.onClick.AddListener(OnWinButtonClicked);
         _loseButton.onClick.AddListener(OnLoseButtonClicked);
+        
+        _uiHeader.ReloadButton.onClick.AddListener(OnReloadButtonClicked);
     }
 
     public void UpdateItemButtons(List<InventoryItem> inventoryItems)
@@ -29,6 +33,8 @@ public class UIController : MonoBehaviour
     public void ShowWin()
     {
         _winButton.gameObject.SetActive(true);
+        
+        HideHeader();
     }
     
     private void HideWin()
@@ -39,11 +45,18 @@ public class UIController : MonoBehaviour
     public void ShowLose()
     {
         _loseButton.gameObject.SetActive(true);
+        
+        HideHeader();
     }
     
     private void HideLose()
     {
         _loseButton.gameObject.SetActive(false);
+    }
+
+    private void HideHeader()
+    {
+        _uiHeader.gameObject.SetActive(false);
     }
 
     private void OnOnInventoryItemPlaced()
@@ -72,6 +85,12 @@ public class UIController : MonoBehaviour
         CustomSceneManager.LoadGameplayScene();
     }
 
+    private void OnReloadButtonClicked()
+    {
+        HideHeader();
+        CustomSceneManager.LoadGameplayScene();
+    }
+
     private void OnDestroy()
     {
         EventManager.OnInventoryItemPlaced -= OnOnInventoryItemPlaced;
@@ -79,5 +98,7 @@ public class UIController : MonoBehaviour
         
         _winButton.onClick.RemoveListener(OnWinButtonClicked);
         _loseButton.onClick.RemoveListener(OnLoseButtonClicked);
+        
+        _uiHeader.ReloadButton.onClick.RemoveListener(OnReloadButtonClicked);
     }
 }
