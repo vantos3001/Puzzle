@@ -7,6 +7,8 @@ public class ItemButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 {
     [SerializeField] private Image Icon;
 
+    [SerializeField] private UITextPanel _counter;
+
     private InventoryItem _item;
     public InventoryItem Item => _item;
 
@@ -22,6 +24,16 @@ public class ItemButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
         _item = item;
         
         Icon.sprite = DataManager.GetInventoryItemIcons(item.Data.IconName);
+        
+        UpdateView();
+    }
+
+    private void UpdateView()
+    {
+        if (!IsItemFree())
+        {
+            _counter.SetText(_item.CurrentCount.ToString());
+        }
     }
 
     public bool IsItemFree()
@@ -34,6 +46,7 @@ public class ItemButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
         if (IsItemFree())
         {
             Icon.sprite = null;
+            _counter.gameObject.SetActive(false);
         }
     }
 
@@ -68,6 +81,8 @@ public class ItemButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
                     _item.CurrentCount--;
                     Clear();
                     EventManager.NotifyInventoryItemPlaced();
+                    
+                    UpdateView();
                 }
             }
             
