@@ -122,7 +122,7 @@ public class ShootItem : Item
         }
 
         var oldRotation = transform.rotation;
-        transform.Rotate(oldRotation.x, oldRotation.x, rotateAngle);
+        transform.Rotate(oldRotation.x, oldRotation.y, rotateAngle);
     }
 
     private bool IsOnScreen(Vector3 position)
