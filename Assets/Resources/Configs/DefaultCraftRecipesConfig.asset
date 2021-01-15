@@ -23,3 +23,13 @@ MonoBehaviour:
     - To: 0
       ResultData:
         Type: 0
+  - From: 6
+    ToItemResultPairs:
+    - To: 5
+      ResultData:
+        Type: 0
+  - From: 7
+    ToItemResultPairs:
+    - To: 1
+      ResultData:
+        Type: 0

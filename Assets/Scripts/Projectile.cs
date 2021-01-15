@@ -18,8 +18,8 @@ public class Projectile : MonoBehaviour
             player.Die();
         }
         
-        var wall = other.gameObject.GetComponent<WallItem>();
-        if (wall != null)
+        var item = other.gameObject.GetComponent<Item>();
+        if (item != null && item.Data.Type == ItemType.Wall)
         {
             _isStop = true;
             Debug.Log("IS WALL");

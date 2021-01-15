@@ -7,6 +7,10 @@ public enum ItemType
     Shoot = 2,
     Pickaxe = 3,
     Empty = 4,
+    Lava = 5,
+    WaterBucket = 6,
+    LavaBucket = 7,
+    
 }
 
 public class Inventory
