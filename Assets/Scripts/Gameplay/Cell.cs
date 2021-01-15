@@ -18,32 +18,37 @@ public class Cell : MonoBehaviour, IDroppable
         _data = data;
     }
 
-    public bool IsEmpty()
+    private bool IsEmpty()
     {
         return _item == null;
     }
 
-    public bool CanDrop(IDraggable draggable)
+    private ItemType GetItemType()
     {
+        return IsEmpty() ? ItemType.Empty : _item.Data.Type;
+    }
+
+    private bool CanDrop(IDraggable draggable, out CraftRecipe recipe)
+    {
+        recipe = null;
         var itemButton = draggable as ItemButton;
 
-        if (itemButton != null)
+        if (itemButton != null && !_data.IsAlwaysLocked)
         {
-            if (!_data.IsAlwaysLocked)
-            {
-                if (IsEmpty()) 
-                {
-                    return true;
-                }
-                else
-                {
-                    //TODO: try craft
-                    //CraftManager.Craft();
-                }
-            }
+            return CraftManager.TryGetCraftRecipe(itemButton.Item.Data.Type,GetItemType(), out recipe);
         }
 
         return false;
+    }
+
+    public void RemoveItem()
+    {
+        if (!IsEmpty())
+        {
+            var oldItem = _item;
+            _item = null;
+            Destroy(oldItem.gameObject);
+        }
     }
 
     public bool SetItem(ItemData itemData, bool force)
@@ -64,11 +69,19 @@ public class Cell : MonoBehaviour, IDroppable
 
     public bool TryDrop(IDraggable draggable)
     {
-        if (CanDrop(draggable))
+        if (CanDrop(draggable, out var recipe))
         {
             var itemButton = draggable as ItemButton;
-            
-            return SetItem(itemButton.Item.Data, false);
+
+            if (recipe != null)
+            {
+                CraftManager.DoCraft(recipe, itemButton.Item.Data,  this);
+                return true;
+            }
+            else
+            {
+                Debug.LogError("Not found recipe for itemType = " + GetItemType());
+            }
         }
 
         return false;
@@ -85,7 +98,7 @@ public class Cell : MonoBehaviour, IDroppable
 
         if (isShow && draggable != null)
         {
-            if (CanDrop(draggable))
+            if (CanDrop(draggable, out _))
             {
                 _cellForeground.ShowUnlockForeground();
             }

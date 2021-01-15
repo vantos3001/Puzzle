@@ -5,7 +5,7 @@ public class Item : MonoBehaviour, IItem
     public bool IsKillPlayer;
 
     private ItemData _data;
-    protected ItemData Data => _data;
+    public ItemData Data => _data;
 
     public void InjectData(ItemData data)
     {

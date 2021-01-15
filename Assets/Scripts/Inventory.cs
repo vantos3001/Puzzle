@@ -5,6 +5,8 @@ public enum ItemType
     Wall = 0,
     Water = 1,
     Shoot = 2,
+    Pickaxe = 3,
+    Empty = 4,
 }
 
 public class Inventory

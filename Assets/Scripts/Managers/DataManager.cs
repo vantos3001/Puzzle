@@ -123,4 +123,18 @@ public static class DataManager
 
         return levelData;
     }
+
+    public static CraftRecipesConfig LoadCraftRecipesConfig(string fileName)
+    {
+        var path = $"Configs/{fileName}";
+        
+        CraftRecipesConfig craftRecipesConfig = Resources.Load<CraftRecipesConfig>(path);
+        
+        if (craftRecipesConfig == null)
+        {
+            Debug.LogError("CraftRecipesConfig is null from file = " + fileName + "; Path = " + path);
+        }
+
+        return craftRecipesConfig;
+    }
 }
