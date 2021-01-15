@@ -121,8 +121,8 @@ public class ShootItem : Item
                 throw new Exception("not found projectileDirection = " + direction);
         }
 
-        var oldRotation = transform.rotation;
-        transform.Rotate(oldRotation.x, oldRotation.y, rotateAngle);
+        var oldEulerAngles = transform.eulerAngles;
+        transform.eulerAngles = new Vector3(oldEulerAngles.x, oldEulerAngles.y, rotateAngle);
     }
 
     private bool IsOnScreen(Vector3 position)

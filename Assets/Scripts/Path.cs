@@ -38,6 +38,12 @@ public class Path
         }
     }
 
+    public Vector3 NextPoint()
+    {
+        var nextIndex = Mathf.Min(_currentIndex + 1, _points.Count - 1);
+        return _points[nextIndex];
+    }
+
     private void End()
     {
         _isEnd = true;
