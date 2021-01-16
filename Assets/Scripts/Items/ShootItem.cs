@@ -64,7 +64,7 @@ public class ShootItem : Item
         
         foreach (var projectile in Projectiles)
         {
-            var newPos = projectile.transform.position + delta * GetDirection(_direction);
+            var newPos = projectile.transform.position + GetDirection(_direction) * (delta * ProjectileSpeed);
             projectile.transform.position = newPos;
 
             if (projectile.IsStop || !IsOnScreen(projectile.transform.position))
