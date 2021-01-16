@@ -25,7 +25,9 @@ public class ShootItem : Item
 
     private List<Projectile> Projectiles = new List<Projectile>();
 
-    private float _currentTime = 0f;
+    private float _currentTime = float.MaxValue;
+
+    private bool _isStartShoot;
 
     protected override void OnDataChanged()
     {
@@ -37,6 +39,8 @@ public class ShootItem : Item
 
     private void Update()
     {
+        if(!_isStartShoot) {return;}
+        
         var delta = Time.deltaTime;
         
         UpdateProjectiles(delta);
@@ -48,6 +52,16 @@ public class ShootItem : Item
             Shoot();
             _currentTime = 0f;
         }
+    }
+
+    private void Awake()
+    {
+        EventManager.OnTapToStartClicked += OnTapToStartClicked;
+    }
+
+    private void OnTapToStartClicked()
+    {
+        _isStartShoot = true;
     }
 
     private void Shoot()
@@ -138,5 +152,10 @@ public class ShootItem : Item
         {
             return true;
         }
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.OnTapToStartClicked -= OnTapToStartClicked;
     }
 }
