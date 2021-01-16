@@ -6,6 +6,8 @@ public class Field : MonoBehaviour
     private const int PIXELS_PER_UNIT = 100;
 
     private const float CUSTOM_CAMERA_SCALE_FACTOR = 0.87f;
+
+    private const float HEIGHT_OFFSET = -1f;
     
     private List<Cell> _cells;
     
@@ -85,7 +87,7 @@ public class Field : MonoBehaviour
         var cellSize = GetCellSize();
 
         var deltaX = cellSize * _fieldSize.x / 2;
-        var deltaY = cellSize * _fieldSize.y / 2;
+        var deltaY = cellSize * _fieldSize.y / 2 + HEIGHT_OFFSET;
 
         return new Vector3(-deltaX, -deltaY, 0);
     }
