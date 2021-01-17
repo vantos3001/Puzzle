@@ -137,7 +137,6 @@ public static class DataManager
         }
         else
         {
-            
             Debug.LogError("Not found Level with name = " + levelName);
         }
 

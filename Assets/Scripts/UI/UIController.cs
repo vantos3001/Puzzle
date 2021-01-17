@@ -83,19 +83,19 @@ public class UIController : MonoBehaviour
     private void OnWinButtonClicked()
     {
         HideWin();
-        CustomSceneManager.LoadGameplayScene();
+        CustomSceneManager.LoadGameplayScene(true);
     }
 
     private void OnLoseButtonClicked()
     {
         HideLose();
-        CustomSceneManager.LoadGameplayScene();
+        CustomSceneManager.LoadGameplayScene(true);
     }
 
     private void OnReloadButtonClicked()
     {
         HideHeader();
-        CustomSceneManager.LoadGameplayScene();
+        CustomSceneManager.LoadGameplayScene(true);
     }
 
     private void OnDestroy()

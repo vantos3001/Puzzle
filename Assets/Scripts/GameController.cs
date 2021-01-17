@@ -23,8 +23,6 @@ public class GameController : MonoBehaviour
         EventManager.OnPlayerPathEnded += Win;
         EventManager.OnPlayerDead += Lose;
         
-        CraftManager.Init();
-        
         LoadGame();
     }
 
