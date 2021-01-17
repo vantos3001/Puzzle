@@ -99,13 +99,15 @@ public static class DataManager
 
     public static LevelData LoadLevelData(string levelName)
     {
-        var path = $"Assets/Resources/Levels/{levelName}.json";
+        var path = $"Levels/{levelName}";
 
         LevelData levelData = null;
+
+        var textAsset = Resources.Load(path) as TextAsset;
         
-        if (File.Exists(path))
+        if (textAsset != null)
         {
-            var json = File.ReadAllText(path);
+            var json = textAsset.text;
 
             levelData = JsonConvert.DeserializeObject<LevelData>(json);
 
@@ -118,7 +120,7 @@ public static class DataManager
         else
         {
             
-            Debug.Log("Not found Level with name = " + levelName);
+            Debug.LogError("Not found Level with name = " + levelName);
         }
 
         return levelData;
