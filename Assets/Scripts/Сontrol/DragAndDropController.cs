@@ -30,7 +30,8 @@ public class DragAndDropController : MonoBehaviour
 
     private void UpdateDrag()
     {
-        var raycastHit = Physics2D.Raycast(new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y), Vector2.zero, 0f, _layerMask);
+        var worldInputPoint = Camera.main.ScreenToWorldPoint(TouchManager.CurrentTouchPosition);
+        var raycastHit = Physics2D.Raycast(new Vector2(worldInputPoint.x, worldInputPoint.y), Vector2.zero, 0f, _layerMask);
 
         IDroppable obj = null;
         
