@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Game.Managers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,6 +8,7 @@ using UnityEngine.UI;
 public class UIFade : MonoBehaviour
 {
     [SerializeField] private Image _image;
+    [SerializeField] private float _fadeTime = 1f;
 
     public Action OnFadeIn;
     public Action OnFadeOut;
@@ -18,29 +20,57 @@ public class UIFade : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        FadeOut();
+        StartFadeOut();
     }
 
 
-    public void FadeIn()
+    public void StartFadeIn()
     {
         gameObject.SetActive(true);
         
-        var color = _image.color;
-        color.a = 1f;
-        _image.color = color;
+        StartCoroutine(FadeIn());
+    }
+    
+    private IEnumerator FadeIn()
+    {
+        for (float i = 0; i < _fadeTime; i += Time.deltaTime)
+        {
+            var a = Mathf.Min(1f, i / _fadeTime);
+            _image.color = SetAlpha(_image.color, a);
+            
+            yield return null;
+        }
+        
+        _image.color = SetAlpha(_image.color, 1f);
         
         OnFadeIn?.Invoke();
     }
 
-    private void FadeOut()
+    private Color SetAlpha(Color color, float alpha)
     {
-        var color = _image.color;
-        color.a = 0f;
-        _image.color = color;
+        color.a = alpha;
+        return color;
+    }
+
+    private void StartFadeOut()
+    {
+        StartCoroutine(FadeOut());
+    }
+
+    private IEnumerator FadeOut()
+    {
+        for (float i = _fadeTime; 0f < i; i -= Time.deltaTime)
+        {
+            var a = Mathf.Max(0f, i / _fadeTime);
+            _image.color = SetAlpha(_image.color, a);
+            
+            yield return null;
+        }
         
-        gameObject.SetActive(false);
+        _image.color = SetAlpha(_image.color, 0f);
+        
         OnFadeOut?.Invoke();
+        gameObject.SetActive(false);
     }
 
     private void OnDestroy()

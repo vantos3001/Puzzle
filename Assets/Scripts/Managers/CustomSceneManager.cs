@@ -9,7 +9,7 @@ namespace Game.Managers
             if (isUseFade)
             {
                 UIManager.UiFade.OnFadeIn += OnFadeIn;
-                UIManager.UiFade.FadeIn();
+                UIManager.UiFade.StartFadeIn();
             }
             else
             {
