@@ -48,7 +48,7 @@ public static class CraftManager
         if (!_isInit)
         {
             _isInit = true;
-            _allRecipes = DataManager.LoadCraftRecipesConfig(CRAFT_RECIPES_CONFIG_NAME).CraftRecipes;
+            _allRecipes = DataManager.Load<CraftRecipesConfig>(DataManager.CONFIG_PATH, CRAFT_RECIPES_CONFIG_NAME).CraftRecipes;
         }
     }
     

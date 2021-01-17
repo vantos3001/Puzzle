@@ -12,9 +12,7 @@ public enum GameState
 public class GameController : MonoBehaviour
 {
     [SerializeField] private UIController UiController;
-    [SerializeField] private string TestLevelName;
-    [SerializeField] private bool IsTestLevel = true;
-    
+
     private GameState _gameState = GameState.None;
 
     private Player _player;
@@ -32,13 +30,10 @@ public class GameController : MonoBehaviour
 
     private void LoadGame()
     {
-        if (IsTestLevel)
+        if (!LevelManager.LoadLevel())
         {
-            LevelManager.ChangeLevel(TestLevelName);
-        }
-        else
-        {
-            LevelManager.ChangeToNextLevel();
+            UiController.ShowSoonNewLevels();
+            return;
         }
         
         _player = LevelBuilder.SpawnTestPlayer(LevelManager.CurrentLevel);
@@ -73,7 +68,7 @@ public class GameController : MonoBehaviour
             ChangeState(GameState.Win);
             UiController.ShowWin();
 
-            if (!IsTestLevel)
+            if (!DataManager.GameSettingsConfig.IsTestLevel)
             {
                 LevelManager.FinishLevel();
             }

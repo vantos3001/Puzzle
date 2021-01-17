@@ -12,6 +12,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private Button _winButton;
     [SerializeField] private Button _loseButton;
 
+    [SerializeField] private GameObject _soonNewLevels;
+
     [SerializeField] private UIHeader _uiHeader;
 
     private void Awake()
@@ -57,6 +59,11 @@ public class UIController : MonoBehaviour
     private void HideHeader()
     {
         _uiHeader.gameObject.SetActive(false);
+    }
+
+    public void ShowSoonNewLevels()
+    {
+        _soonNewLevels.gameObject.SetActive(true);
     }
 
     private void OnOnInventoryItemPlaced()

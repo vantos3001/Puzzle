@@ -7,6 +7,9 @@ public static class DataManager
 {
     private const string INVENTORY_ITEM_ICON_PATH = "InventoryItemIcons";
     private const string CELL_BACKGROUND_PATH = "CellBackgrounds";
+
+    public const string CONFIG_PATH = "Configs";
+    private const string GAME_SETTINGS_CONFIG_FILE_NAME = "GameSettingsConfig";
     
     private static Dictionary<string, Sprite> _cachedInventoryItemIcons = new Dictionary<string, Sprite>();
     private static Dictionary<string, GameObject> _cachedItemPrefabs = new Dictionary<string, GameObject>();
@@ -14,6 +17,21 @@ public static class DataManager
     private static Dictionary<string, Sprite> _cachedCellBackgrounds = new Dictionary<string, Sprite>();
     
     private static Dictionary<string, GameObject> _cachedOtherPrefabs = new Dictionary<string, GameObject>();
+
+    private static GameSettingsConfig _gameSettingsConfig;
+
+    public static GameSettingsConfig GameSettingsConfig
+    {
+        get
+        {
+            if (_gameSettingsConfig == null)
+            {
+                _gameSettingsConfig = Load<GameSettingsConfig>(CONFIG_PATH, GAME_SETTINGS_CONFIG_FILE_NAME);
+            }
+            
+            return _gameSettingsConfig;
+        }
+    }
 
     public static Sprite GetSprite(string spriteName, string path, Dictionary<string, Sprite> cachedSprites)
     {
@@ -126,17 +144,16 @@ public static class DataManager
         return levelData;
     }
 
-    public static CraftRecipesConfig LoadCraftRecipesConfig(string fileName)
+    public static T Load<T>(string path, string fileName) where T : Object
     {
-        var path = $"Configs/{fileName}";
-        
-        CraftRecipesConfig craftRecipesConfig = Resources.Load<CraftRecipesConfig>(path);
-        
-        if (craftRecipesConfig == null)
+        T file = Resources.Load<T>($"{path}/{fileName}");
+
+        if (file == null)
         {
-            Debug.LogError("CraftRecipesConfig is null from file = " + fileName + "; Path = " + path);
+            Debug.LogError("Not found "+typeof(T) + " with name = " + fileName + "; Path = " + path);
+
         }
 
-        return craftRecipesConfig;
+        return file;
     }
 }
