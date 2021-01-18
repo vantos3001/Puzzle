@@ -9,6 +9,8 @@ public class GameLoader : MonoBehaviour
         
         CraftManager.Init();
 
+        HintManager.Init();
+
         CustomSceneManager.LoadGameplayScene(false);
     }
 }

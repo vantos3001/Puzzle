@@ -5,6 +5,8 @@ public static class LevelManager
     private const string LEVEL_PREFIX_NAME = "Level";
 
     private static string _currentLevelName;
+    public static string CurrentLevelName => _currentLevelName;
+    
     private static Level _currentLevel;
     public static Level CurrentLevel => _currentLevel;
 
@@ -50,6 +52,8 @@ public static class LevelManager
     {
         var levelIndex = PlayerPrefs.GetInt(SaveManager.SAVE_LEVEL_INDEX_KEY, 1);
         SaveManager.SaveLevelIndex(levelIndex + 1);
+
+        HintManager.Clear();
     }
 
     private static void RestartLevel()

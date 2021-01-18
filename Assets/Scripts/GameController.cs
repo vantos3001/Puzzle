@@ -12,7 +12,6 @@ public enum GameState
 public class GameController : MonoBehaviour
 {
     [SerializeField] private UIController UiController;
-    [SerializeField] private HintController _hintController;
 
     private GameState _gameState = GameState.None;
 
@@ -42,12 +41,13 @@ public class GameController : MonoBehaviour
             UiController.ShowSoonNewLevels();
             return;
         }
+
+        var currentLevel = LevelManager.CurrentLevel;
+        _player = LevelBuilder.SpawnTestPlayer(currentLevel);
         
-        _player = LevelBuilder.SpawnTestPlayer(LevelManager.CurrentLevel);
+        HintManager.Load(currentLevel.IsHintOnStart, LevelManager.CurrentLevelName);
         
-        _hintController.Load(LevelManager.CurrentLevel.IsHintOnStart);
-        
-        UiController.UpdateItemButtons(LevelManager.CurrentLevel.Inventory.InventoryItems);
+        UiController.UpdateItemButtons(currentLevel.Inventory.InventoryItems);
 
         Prepare();
     }
