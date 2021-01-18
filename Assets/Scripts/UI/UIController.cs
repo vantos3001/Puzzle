@@ -16,14 +16,15 @@ public class UIController : MonoBehaviour
 
     [SerializeField] private UIHeader _uiHeader;
 
-    private void Awake()
+    public void Init()
     {
+        _uiHeader.Init();
+        
         EventManager.OnInventoryItemPlaced += OnOnInventoryItemPlaced;
         _tapToStart.onClick.AddListener(OnTapToStartClicked);
         
         _winButton.onClick.AddListener(OnWinButtonClicked);
         _loseButton.onClick.AddListener(OnLoseButtonClicked);
-        
         _uiHeader.ReloadButton.onClick.AddListener(OnReloadButtonClicked);
     }
 

@@ -15,7 +15,9 @@ public class Field : MonoBehaviour
 
     private float _referenceCellWidth = 256f;
 
-    public void InjectCells(Vector2 fieldSize , List<Cell> cells)
+    private bool _isHintStarted;
+
+    public void Init(Vector2 fieldSize , List<Cell> cells)
     {
         _fieldSize = fieldSize;
         _cells = cells;
@@ -23,12 +25,10 @@ public class Field : MonoBehaviour
         UpdateCameraSize();
         UpdateCellPositions();
         UpdateFieldPosition();
-    }
-
-    private void Awake()
-    {
+        
         EventManager.OnInventoryItemMoveStarted += ShowCellForegrounds;
         EventManager.OnInventoryItemMoveEnded += HideCellForegrounds;
+        EventManager.OnHintStarted += OnHintStarted;
     }
 
     public Cell GetCell(PointData pointData)
@@ -97,9 +97,16 @@ public class Field : MonoBehaviour
         return _referenceCellWidth / PIXELS_PER_UNIT;
     }
 
+    private void OnHintStarted()
+    {
+        EventManager.OnHintStarted -= OnHintStarted;
+
+        _isHintStarted = true;
+    }
+
     private void ShowCellForegrounds(IDraggable draggable)
     {
-        if(draggable == null){return;}
+        if(!_isHintStarted || draggable == null){return;}
         
         foreach (var cell in _cells)
         {
@@ -109,6 +116,8 @@ public class Field : MonoBehaviour
 
     private void HideCellForegrounds()
     {
+        if(!_isHintStarted) {return;}
+        
         foreach (var cell in _cells)
         {
             cell.UpdateForeground(false, null);
@@ -119,5 +128,7 @@ public class Field : MonoBehaviour
     {
         EventManager.OnInventoryItemMoveStarted -= ShowCellForegrounds;
         EventManager.OnInventoryItemMoveEnded -= HideCellForegrounds;
+        
+        EventManager.OnHintStarted -= OnHintStarted;
     }
 }

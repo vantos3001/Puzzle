@@ -39,7 +39,7 @@ public static class LevelBuilder
         }
 
         var field = fieldGO.GetComponent<Field>();
-        field.InjectCells(fieldSize, cells);
+        field.Init(fieldSize, cells);
         
         return field;
     }

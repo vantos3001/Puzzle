@@ -12,6 +12,7 @@ public enum GameState
 public class GameController : MonoBehaviour
 {
     [SerializeField] private UIController UiController;
+    [SerializeField] private HintController _hintController;
 
     private GameState _gameState = GameState.None;
 
@@ -19,10 +20,18 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
+        Init();
+    }
+
+    private void Init()
+    {
         EventManager.OnTapToStartClicked += Play;
         EventManager.OnPlayerPathEnded += Win;
         EventManager.OnPlayerDead += Lose;
         
+        UiController.Init();
+        
+
         LoadGame();
     }
 
@@ -35,6 +44,8 @@ public class GameController : MonoBehaviour
         }
         
         _player = LevelBuilder.SpawnTestPlayer(LevelManager.CurrentLevel);
+        
+        _hintController.Load(LevelManager.CurrentLevel.IsHintOnStart);
         
         UiController.UpdateItemButtons(LevelManager.CurrentLevel.Inventory.InventoryItems);
 

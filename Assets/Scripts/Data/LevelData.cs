@@ -6,6 +6,8 @@ using UnityEngine;
 [Serializable]
 public class LevelData
 {
+    public bool IsHintOnStart;
+    
     public List<InventoryItemData> InventoryItemDates;
 
     public Vector2 FieldSize;

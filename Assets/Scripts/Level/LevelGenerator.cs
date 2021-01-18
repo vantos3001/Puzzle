@@ -8,6 +8,7 @@ public static class LevelGenerator
     {
         return new LevelData
         {
+            IsHintOnStart = false,
             InventoryItemDates = GetTestItems().ConvertAll(item => item.Data),
             FieldSize = new Vector2(5, 5),
             CellDates = GetTestCells(),
@@ -26,6 +27,7 @@ public static class LevelGenerator
         
         return new LevelData
         {
+            IsHintOnStart = false,
             InventoryItemDates = GetTestItems().ConvertAll(item => item.Data),
             FieldSize = fieldSize,
             CellDates = cellDates,

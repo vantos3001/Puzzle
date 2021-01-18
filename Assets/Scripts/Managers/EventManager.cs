@@ -7,6 +7,9 @@ public static class EventManager
     public static Action OnInventoryItemMoveEnded;
     
     public static Action OnTapToStartClicked;
+    
+    public static Action OnHintActivated;
+    public static Action OnHintStarted;
 
     public static Action OnPlayerDead;
     public static Action OnPlayerPathEnded;
@@ -29,6 +32,16 @@ public static class EventManager
     public static void NotifyTapToStartClicked()
     {
         OnTapToStartClicked?.Invoke();
+    }
+
+    public static void NotifyOnHintActivated()
+    {
+        OnHintActivated?.Invoke();
+    }
+    
+    public static void NotifyOnHintStarted()
+    {
+        OnHintStarted?.Invoke();
     }
 
     public static void NotifyPlayerDead()

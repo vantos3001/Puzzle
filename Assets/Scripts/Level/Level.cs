@@ -15,6 +15,8 @@ public class Level
 
     public PointData PlayerStartPoint => _levelData.Path.CellPoints[0];
 
+    public bool IsHintOnStart => _levelData.IsHintOnStart;
+
     public Level(LevelData levelData)
     {
         _levelData = levelData;
