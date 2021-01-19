@@ -15,7 +15,7 @@ public class Field : MonoBehaviour
 
     private float _referenceCellWidth = 256f;
 
-    private bool _isHintStarted;
+    private bool _isHintActive;
 
     public void Init(Vector2 fieldSize , List<Cell> cells)
     {
@@ -101,26 +101,24 @@ public class Field : MonoBehaviour
     {
         EventManager.OnHintStarted -= OnHintStarted;
 
-        _isHintStarted = true;
+        _isHintActive = true;
     }
 
     private void ShowCellForegrounds(IDraggable draggable)
     {
-        if(!_isHintStarted || draggable == null){return;}
+        if(draggable == null){return;}
         
         foreach (var cell in _cells)
         {
-            cell.UpdateForeground(true, draggable);
+            cell.UpdateForeground(true, _isHintActive, draggable);
         }
     }
 
     private void HideCellForegrounds()
     {
-        if(!_isHintStarted) {return;}
-        
         foreach (var cell in _cells)
         {
-            cell.UpdateForeground(false, null);
+            cell.UpdateForeground(false, _isHintActive, null);
         }
     }
 

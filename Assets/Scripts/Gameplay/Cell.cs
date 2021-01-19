@@ -87,24 +87,38 @@ public class Cell : MonoBehaviour, IDroppable
         return false;
     }
     
-    public void UpdateForegroundHighlight(bool isHighlight)
+    public void UpdateForegroundHighlight(bool isHighlight, bool isHintActive)
     {
-        _cellForeground.Highlight(isHighlight);
+        if (isHintActive)
+        {
+            _cellForeground.HintHighlight(isHighlight);
+        }
+        else
+        {
+            _cellForeground.NoHintHighlight(isHighlight);
+        }
     }
 
-    public void UpdateForeground(bool isShow, IDraggable draggable)
+    public void UpdateForeground(bool isShow, bool isHintActive, IDraggable draggable)
     {
         if(_cellForeground.IsShow == isShow){return;}
 
         if (isShow && draggable != null)
         {
-            if (CanDrop(draggable, out _))
+            if (isHintActive)
             {
-                _cellForeground.ShowUnlockForeground();
+                if (CanDrop(draggable, out _))
+                {
+                    _cellForeground.ShowUnlockForeground();
+                }
+                else
+                {
+                    _cellForeground.ShowLockForeground();
+                } 
             }
             else
             {
-                _cellForeground.ShowLockForeground();
+                _cellForeground.ShowNoHintForeground();
             }
         }
         else

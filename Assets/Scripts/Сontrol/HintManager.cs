@@ -2,6 +2,8 @@
 public static class HintManager
 {
     private static bool _isHintActive;
+    public static bool IsHintActive => _isHintActive;
+
     private static string _levelName;
 
     public static void Init()

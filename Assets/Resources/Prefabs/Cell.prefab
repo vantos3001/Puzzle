@@ -219,5 +219,8 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 2975799358388612470}
   UnlockColor: {r: 0.0025007725, g: 1, b: 0, a: 0.2509804}
   LockColor: {r: 1, g: 0, b: 0, a: 0.2509804}
-  DefaultAlpha: 0.25
-  HighlightAlpha: 0.5
+  NoHintColor: {r: 1, g: 1, b: 1, a: 0}
+  NoHintDefaultAlpha: 0
+  NoHintHighlightAlpha: 0.25
+  HintDefaultAlpha: 0.25
+  HintHighlightAlpha: 0.5

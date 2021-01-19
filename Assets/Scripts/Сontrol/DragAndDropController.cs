@@ -56,12 +56,12 @@ public class DragAndDropController : MonoBehaviour
     {
         if (newCell != null)
         {
-            newCell.UpdateForegroundHighlight(true);
+            newCell.UpdateForegroundHighlight(true, HintManager.IsHintActive);
         }
 
         if (oldCell != null)
         {
-            oldCell.UpdateForegroundHighlight(false);
+            oldCell.UpdateForegroundHighlight(false, HintManager.IsHintActive);
         }
     }
 
