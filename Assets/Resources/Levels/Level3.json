@@ -3,7 +3,8 @@
     {
       "IconName": "wall_icon",
       "Type": 0,
-      "ItemPrefab": "WallItem"
+      "ItemPrefab": "WallItem",
+      "Count": 1
     }
   ],
   "FieldSize": {
@@ -21,7 +22,7 @@
         "Y": 0
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -31,7 +32,7 @@
         "Y": 0
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -41,7 +42,7 @@
         "Y": 0
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -51,7 +52,7 @@
         "Y": 0
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -61,7 +62,7 @@
         "Y": 0
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -71,7 +72,7 @@
         "Y": 0
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -81,8 +82,8 @@
         "Y": 1
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
-      "IsAlwaysLocked": false,
+      "Background": "ColorRoad2",
+      "IsAlwaysLocked": true,
       "Item": null
     },
     {
@@ -91,7 +92,7 @@
         "Y": 1
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad2",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -101,7 +102,7 @@
         "Y": 1
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad2",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -111,7 +112,7 @@
         "Y": 1
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad2",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -121,7 +122,7 @@
         "Y": 1
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -131,7 +132,7 @@
         "Y": 1
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -141,7 +142,7 @@
         "Y": 2
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -151,12 +152,13 @@
         "Y": 2
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad",
       "IsAlwaysLocked": false,
       "Item": 
       {
       "Type": 2,
-      "ItemPrefab": "ShootItem"
+      "ItemPrefab": "ShootItem",
+      "Direction": 1
     }
     },
     {
@@ -165,7 +167,7 @@
         "Y": 2
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -175,7 +177,7 @@
         "Y": 2
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad2",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -185,7 +187,7 @@
         "Y": 2
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -195,7 +197,7 @@
         "Y": 2
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -205,7 +207,7 @@
         "Y": 3
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -215,7 +217,7 @@
         "Y": 3
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -225,7 +227,7 @@
         "Y": 3
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -235,7 +237,7 @@
         "Y": 3
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad2",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -245,7 +247,7 @@
         "Y": 3
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -255,7 +257,7 @@
         "Y": 3
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -265,7 +267,7 @@
         "Y": 4
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -275,7 +277,7 @@
         "Y": 4
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -285,7 +287,7 @@
         "Y": 4
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -295,7 +297,7 @@
         "Y": 4
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad2",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -305,7 +307,7 @@
         "Y": 4
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -315,7 +317,7 @@
         "Y": 4
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -325,7 +327,7 @@
         "Y": 5
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -335,7 +337,7 @@
         "Y": 5
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -345,12 +347,13 @@
         "Y": 5
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad",
       "IsAlwaysLocked": false,
       "Item": 
       {
       "Type": 2,
-      "ItemPrefab": "ShootItem"
+      "ItemPrefab": "ShootItem",
+      "Direction": 2
     }
     },
     {
@@ -359,7 +362,7 @@
         "Y": 5
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad2",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -369,7 +372,7 @@
         "Y": 5
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad2",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -379,7 +382,7 @@
         "Y": 5
       },
       "CellPrefab": "Cell",
-      "Background": "Default",
+      "Background": "ColorRoad2",
       "IsAlwaysLocked": false,
       "Item": null
     }

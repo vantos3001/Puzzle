@@ -147,7 +147,7 @@
       },
       "CellPrefab": "Cell",
       "Background": "ColorRoad2",
-      "IsAlwaysLocked": false,
+      "IsAlwaysLocked": true,
       "Item": null
     },
     {
