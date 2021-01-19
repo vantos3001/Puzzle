@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Game.Managers;
+using UnityEngine;
 
 public static class LevelManager
 {
@@ -56,8 +57,9 @@ public static class LevelManager
         HintManager.Clear();
     }
 
-    private static void RestartLevel()
+    public static void RestartLevel()
     {
-        ChangeLevel(_currentLevelName);
+        // ChangeLevel(_currentLevelName);
+        CustomSceneManager.LoadGameplayScene(true);
     }
 }

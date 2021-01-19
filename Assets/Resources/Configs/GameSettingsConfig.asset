@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abc63949e9d154d4e9fde284fdd0fa37, type: 3}
   m_Name: GameSettingsConfig
   m_EditorClassIdentifier: 
-  SoonLevelName: Level3
-  TestLevelName: 
+  SoonLevelName: Level8
+  TestLevelName: Level3
   IsTestLevel: 0

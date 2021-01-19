@@ -8,6 +8,9 @@ public class Player : MonoBehaviour
     private Path _path;
     
     [SerializeField] private float Speed = 1;
+    [SerializeField] private Sprite DeadSprite;
+
+    [SerializeField] private SpriteRenderer _spriteRenderer;
 
     private bool _isMove;
 
@@ -42,6 +45,9 @@ public class Player : MonoBehaviour
 
         _isDead = true;
         Debug.Log("IS DEAD NOW");
+
+        _spriteRenderer.sprite = DeadSprite;
+        transform.eulerAngles = Vector3.zero;
 
         Stop();
         

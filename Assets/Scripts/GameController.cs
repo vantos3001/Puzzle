@@ -11,6 +11,8 @@ public enum GameState
 
 public class GameController : MonoBehaviour
 {
+    private const float INVOKE_RESTART_LEVEL_TIME = 0.35f;
+    
     [SerializeField] private UIController UiController;
 
     private GameState _gameState = GameState.None;
@@ -89,8 +91,15 @@ public class GameController : MonoBehaviour
         if (_gameState == GameState.Play)
         {
             ChangeState(GameState.Lose);
-            UiController.ShowLose();
+            // UiController.ShowLose();
+            UiController.HideHeader();
+            Invoke(nameof(RestartLevel), INVOKE_RESTART_LEVEL_TIME);
         }
+    }
+
+    private void RestartLevel()
+    {
+        LevelManager.RestartLevel();
     }
 
     private void ChangeState(GameState gameState)

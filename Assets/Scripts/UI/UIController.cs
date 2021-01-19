@@ -57,7 +57,7 @@ public class UIController : MonoBehaviour
         _loseButton.gameObject.SetActive(false);
     }
 
-    private void HideHeader()
+    public void HideHeader()
     {
         _uiHeader.gameObject.SetActive(false);
     }
