@@ -30,9 +30,12 @@ public static class TutorialManager
         if (!_isInit)
         {
             _isInit = true;
-            
-            _isTutorial = !SaveManager.GetBool(SaveManager.IS_TUTORIAL_FINISHED_SAVE_KEY);
-            _tutorialConfig = DataManager.TutorialConfig;
+
+            if (!DataManager.GameSettingsConfig.IsTestLevel)
+            {
+                _isTutorial = !SaveManager.GetBool(SaveManager.IS_TUTORIAL_FINISHED_SAVE_KEY);
+                _tutorialConfig = DataManager.TutorialConfig; 
+            }
         }
     }
     
@@ -166,10 +169,5 @@ public static class TutorialManager
         _isTutorial = false;
         SaveManager.SaveBool(SaveManager.IS_TUTORIAL_FINISHED_SAVE_KEY, true);
         _tutorialHint?.Hide();
-    }
-
-    public static void SkipTutorial()
-    {
-        DoFinishTutorial();
     }
 }

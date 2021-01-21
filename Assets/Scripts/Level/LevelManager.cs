@@ -15,7 +15,6 @@ public static class LevelManager
     {
         if (DataManager.GameSettingsConfig.IsTestLevel)
         {
-            TutorialManager.SkipTutorial();
             ChangeLevel(DataManager.GameSettingsConfig.TestLevelName);
         }
         else

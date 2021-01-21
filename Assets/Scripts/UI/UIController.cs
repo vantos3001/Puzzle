@@ -30,6 +30,8 @@ public class UIController : MonoBehaviour
         _winButton.onClick.AddListener(OnWinButtonClicked);
         _loseButton.onClick.AddListener(OnLoseButtonClicked);
         _uiHeader.ReloadButton.onClick.AddListener(OnReloadButtonClicked);
+        
+        _uiHeader.gameObject.SetActive(!TutorialManager.IsTutorial);
     }
 
     public void UpdateItemButtons(List<InventoryItem> inventoryItems)
