@@ -1,15 +1,21 @@
 {
   "InventoryItemDates": [
     {
+      "IconName": "wall_icon",
+      "Type": 0,
+      "ItemPrefab": "WallItem",
+      "Count": 1
+    },
+    {
       "IconName": "pickaxe_icon",
       "Type": 3,
       "ItemPrefab": null,
       "Count": 1
     },
-    {
-      "IconName": "water_bucket_icon",
-      "Type": 6,
-      "ItemPrefab": "WaterItem",
+     {
+      "IconName": "lava_bucket_icon",
+      "Type": 7,
+      "ItemPrefab": "LavaItem",
       "Count": 1
     }
   ],
@@ -70,7 +76,11 @@
       "CellPrefab": "Cell",
       "Background": "ColorRoad",
       "IsAlwaysLocked": false,
-      "Item": null
+      "Item": {
+      "Type": 2,
+      "ItemPrefab": "ShootItem",
+      "Direction": 3
+      }
     },
     {
       "Coords": {
@@ -88,8 +98,8 @@
         "Y": 1
       },
       "CellPrefab": "Cell",
-      "Background": "ColorRoad2",
-      "IsAlwaysLocked": true,
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
       "Item": null
     },
     {
@@ -98,7 +108,7 @@
         "Y": 1
       },
       "CellPrefab": "Cell",
-      "Background": "ColorRoad2",
+      "Background": "ColorRoad",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -108,7 +118,7 @@
         "Y": 1
       },
       "CellPrefab": "Cell",
-      "Background": "ColorRoad2",
+      "Background": "ColorRoad",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -138,7 +148,7 @@
         "Y": 1
       },
       "CellPrefab": "Cell",
-      "Background": "ColorRoad",
+      "Background": "ColorRoad2",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -158,7 +168,7 @@
         "Y": 2
       },
       "CellPrefab": "Cell",
-      "Background": "ColorRoad",
+      "Background": "ColorRoad2",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -166,89 +176,6 @@
       "Coords": {
         "X": 2,
         "Y": 2
-      },
-      "CellPrefab": "Cell",
-      "Background": "ColorRoad2",
-      "IsAlwaysLocked": false,
-      "Item": {
-      "Type": 5,
-      "ItemPrefab": "LavaItem"
-      }
-    },
-    {
-      "Coords": {
-        "X": 3,
-        "Y": 2
-      },
-      "CellPrefab": "Cell",
-      "Background": "ColorRoad",
-      "IsAlwaysLocked": false,
-      "Item": null
-    },
-    {
-      "Coords": {
-        "X": 4,
-        "Y": 2
-      },
-      "CellPrefab": "Cell",
-      "Background": "ColorRoad",
-      "IsAlwaysLocked": false,
-      "Item": null
-    },
-    {
-      "Coords": {
-        "X": 5,
-        "Y": 2
-      },
-      "CellPrefab": "Cell",
-      "Background": "ColorRoad",
-      "IsAlwaysLocked": false,
-      "Item": null
-    },
-    {
-      "Coords": {
-        "X": 0,
-        "Y": 3
-      },
-      "CellPrefab": "Cell",
-      "Background": "ColorRoad",
-      "IsAlwaysLocked": false,
-      "Item": null
-    },
-    {
-      "Coords": {
-        "X": 1,
-        "Y": 3
-      },
-      "CellPrefab": "Cell",
-      "Background": "ColorRoad",
-      "IsAlwaysLocked": false,
-      "Item": null
-    },
-    {
-      "Coords": {
-        "X": 2,
-        "Y": 3
-      },
-      "CellPrefab": "Cell",
-      "Background": "ColorRoad2",
-      "IsAlwaysLocked": false,
-      "Item": null
-    },
-    {
-      "Coords": {
-        "X": 3,
-        "Y": 3
-      },
-      "CellPrefab": "Cell",
-      "Background": "ColorRoad2",
-      "IsAlwaysLocked": false,
-      "Item": null
-    },
-    {
-      "Coords": {
-        "X": 4,
-        "Y": 3
       },
       "CellPrefab": "Cell",
       "Background": "ColorRoad2",
@@ -260,13 +187,96 @@
     },
     {
       "Coords": {
+        "X": 3,
+        "Y": 2
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad2",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 4,
+        "Y": 2
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
         "X": 5,
+        "Y": 2
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad2",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 0,
+        "Y": 3
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad2",
+      "IsAlwaysLocked": true,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 1,
         "Y": 3
       },
       "CellPrefab": "Cell",
       "Background": "ColorRoad2",
       "IsAlwaysLocked": false,
       "Item": null
+    },
+    {
+      "Coords": {
+        "X": 2,
+        "Y": 3
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 3,
+        "Y": 3
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad2",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 4,
+        "Y": 3
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 5,
+        "Y": 3
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad2",
+      "IsAlwaysLocked": false,
+      "Item": {
+      "Type": 1,
+      "ItemPrefab": "WaterItem"
+      }
     },
     {
       "Coords": {
@@ -304,7 +314,7 @@
         "Y": 4
       },
       "CellPrefab": "Cell",
-      "Background": "ColorRoad",
+      "Background": "ColorRoad2",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -314,7 +324,7 @@
         "Y": 4
       },
       "CellPrefab": "Cell",
-      "Background": "ColorRoad",
+      "Background": "ColorRoad2",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -324,7 +334,7 @@
         "Y": 4
       },
       "CellPrefab": "Cell",
-      "Background": "ColorRoad",
+      "Background": "ColorRoad2",
       "IsAlwaysLocked": false,
       "Item": null
     },
@@ -393,19 +403,31 @@
     "CellPoints": [
       {
         "X": 0,
-        "Y": 1
-      },
-      {
-        "X": 2,
-        "Y": 1
-      },
-      {
-        "X": 2,
         "Y": 3
+      },
+      {
+        "X": 1,
+        "Y": 3
+      },
+      {
+        "X": 1,
+        "Y": 2
+      },
+      {
+        "X": 3,
+        "Y": 2
+      },
+      {
+        "X": 3,
+        "Y": 4
       },
       {
         "X": 5,
-        "Y": 3
+        "Y": 4
+      },
+      {
+        "X": 5,
+        "Y": 1
       }
     ]
   }
