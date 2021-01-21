@@ -1,0 +1,411 @@
+{
+  "InventoryItemDates": [
+    {
+      "IconName": "water_bucket_icon",
+      "Type": 6,
+      "ItemPrefab": "WaterItem",
+      "Count": 1
+    }
+  ],
+  "FieldSize": {
+    "x": 6,
+    "y": 6
+  },
+  "StartFieldPoint": {
+    "x": 10,
+    "y": 10
+  },
+  "CellDates": [
+    {
+      "Coords": {
+        "X": 0,
+        "Y": 0
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 1,
+        "Y": 0
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 2,
+        "Y": 0
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 3,
+        "Y": 0
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 4,
+        "Y": 0
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 5,
+        "Y": 0
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 0,
+        "Y": 1
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad2",
+      "IsAlwaysLocked": true,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 1,
+        "Y": 1
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad2",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 2,
+        "Y": 1
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad2",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 3,
+        "Y": 1
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad2",
+      "IsAlwaysLocked": false,
+      "Item": {
+      "Type": 5,
+      "ItemPrefab": "LavaItem"
+      }
+    },
+    {
+      "Coords": {
+        "X": 4,
+        "Y": 1
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad2",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 5,
+        "Y": 1
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad2",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 0,
+        "Y": 2
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 1,
+        "Y": 2
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 2,
+        "Y": 2
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 3,
+        "Y": 2
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 4,
+        "Y": 2
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 5,
+        "Y": 2
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 0,
+        "Y": 3
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 1,
+        "Y": 3
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 2,
+        "Y": 3
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 3,
+        "Y": 3
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 4,
+        "Y": 3
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 5,
+        "Y": 3
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 0,
+        "Y": 4
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 1,
+        "Y": 4
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 2,
+        "Y": 4
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 3,
+        "Y": 4
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 4,
+        "Y": 4
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 5,
+        "Y": 4
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 0,
+        "Y": 5
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 1,
+        "Y": 5
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 2,
+        "Y": 5
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 3,
+        "Y": 5
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 4,
+        "Y": 5
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    },
+    {
+      "Coords": {
+        "X": 5,
+        "Y": 5
+      },
+      "CellPrefab": "Cell",
+      "Background": "ColorRoad",
+      "IsAlwaysLocked": false,
+      "Item": null
+    }
+  ],
+   "Path": {
+    "CellPoints": [
+      {
+        "X": 0,
+        "Y": 1
+      },
+      {
+        "X": 1,
+        "Y": 1
+      },
+      {
+        "X": 2,
+        "Y": 1
+      },
+      {
+        "X": 3,
+        "Y": 1
+      },
+      {
+        "X": 4,
+        "Y": 1
+      },
+       {
+        "X": 5,
+        "Y": 1
+      }
+    ]
+  }
+}
