@@ -165,6 +165,11 @@ public static class TutorialManager
     {
         _isTutorial = false;
         SaveManager.SaveBool(SaveManager.IS_TUTORIAL_FINISHED_SAVE_KEY, true);
-        _tutorialHint.Hide();
+        _tutorialHint?.Hide();
+    }
+
+    public static void SkipTutorial()
+    {
+        DoFinishTutorial();
     }
 }
