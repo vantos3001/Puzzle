@@ -4,7 +4,7 @@ public static class EventManager
 {
     public static Action OnInventoryItemPlaced;
     public static Action<IDraggable> OnInventoryItemMoveStarted;
-    public static Action OnInventoryItemMoveEnded;
+    public static Action<IDroppable> OnInventoryItemMoveEnded;
     
     public static Action OnTapToStartClicked;
     
@@ -24,9 +24,9 @@ public static class EventManager
         OnInventoryItemMoveStarted?.Invoke(draggable);
     }
     
-    public static void NotifyInventoryItemMoveEnded()
+    public static void NotifyInventoryItemMoveEnded(IDroppable droppable)
     {
-        OnInventoryItemMoveEnded?.Invoke();
+        OnInventoryItemMoveEnded?.Invoke(droppable);
     }
 
     public static void NotifyTapToStartClicked()

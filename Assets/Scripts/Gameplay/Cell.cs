@@ -69,6 +69,11 @@ public class Cell : MonoBehaviour, IDroppable
 
     public bool TryDrop(IDraggable draggable)
     {
+        if (TutorialManager.IsTutorial && !TutorialManager.IsTutorialCell(this))
+        {
+            return false;
+        }
+        
         if (CanDrop(draggable, out var recipe))
         {
             var itemButton = draggable as ItemButton;

@@ -72,7 +72,7 @@ public class ItemButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
             worldPosition.z = 0;
 
             var target = _dragAndDropController.EndDrag();
-            EventManager.NotifyInventoryItemMoveEnded();
+            EventManager.NotifyInventoryItemMoveEnded(target);
 
             if (target != null)
             {

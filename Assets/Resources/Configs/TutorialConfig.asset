@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetInventoryItemIndex: 0
   TargetCellCoords:
-    X: 0
-    Y: 0
+    X: 2
+    Y: 3

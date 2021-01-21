@@ -24,7 +24,7 @@ public class UIController : MonoBehaviour
     {
         _uiHeader.Init();
         
-        EventManager.OnInventoryItemPlaced += OnOnInventoryItemPlaced;
+        EventManager.OnInventoryItemPlaced += OnInventoryItemPlaced;
         _tapToStart.onClick.AddListener(OnTapToStartClicked);
         
         _winButton.onClick.AddListener(OnWinButtonClicked);
@@ -71,7 +71,7 @@ public class UIController : MonoBehaviour
         _soonNewLevels.gameObject.SetActive(true);
     }
 
-    private void OnOnInventoryItemPlaced()
+    private void OnInventoryItemPlaced()
     {
         if (_itemButtons.IsAllFree())
         {
@@ -105,7 +105,7 @@ public class UIController : MonoBehaviour
 
     private void OnDestroy()
     {
-        EventManager.OnInventoryItemPlaced -= OnOnInventoryItemPlaced;
+        EventManager.OnInventoryItemPlaced -= OnInventoryItemPlaced;
         _tapToStart.onClick.RemoveListener(OnTapToStartClicked);
         
         _winButton.onClick.RemoveListener(OnWinButtonClicked);

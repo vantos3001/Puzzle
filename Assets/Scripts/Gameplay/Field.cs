@@ -114,7 +114,7 @@ public class Field : MonoBehaviour
         }
     }
 
-    private void HideCellForegrounds()
+    private void HideCellForegrounds(IDroppable droppable)
     {
         foreach (var cell in _cells)
         {

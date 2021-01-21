@@ -7,6 +7,7 @@ public class TutorialHintMovement
     public Vector3 From;
     public Vector3 To;
     public float Speed;
+    public float WaitTime = 0;
 }
 
 public class UITutorialHint : MonoBehaviour
@@ -15,7 +16,7 @@ public class UITutorialHint : MonoBehaviour
     
     private List<TutorialHintMovement> _tutorialMovements = new List<TutorialHintMovement>();
     private int _currentTutorialMovementIndex;
-    private float _currentTime;
+    private float _currentWaitTime;
 
     private bool _isShow;
 
@@ -23,7 +24,7 @@ public class UITutorialHint : MonoBehaviour
     {
         _isShow = true;
         _currentTutorialMovementIndex = 0;
-        _currentTime = 0f;
+        _currentWaitTime = 0f;
 
         _tutorialMovements = tutorialMovements;
         
@@ -47,9 +48,16 @@ public class UITutorialHint : MonoBehaviour
         
         if (distance < CHANGE_POINT_DISTANCE)
         {
-            ChangeMovement();
-            point = _tutorialMovements[_currentTutorialMovementIndex];
-            distance = (point.To - transform.position).magnitude;
+            _currentWaitTime += delta;
+            
+            if (point.WaitTime <= _currentWaitTime)
+            {
+                ChangeMovement();
+                point = _tutorialMovements[_currentTutorialMovementIndex];
+                transform.position = point.From;
+            
+                distance = (point.To - transform.position).magnitude;
+            }
         }
         
         var deltaDistance = delta * point.Speed;
@@ -69,6 +77,8 @@ public class UITutorialHint : MonoBehaviour
         {
             _currentTutorialMovementIndex = 0;
         }
+        
+        _currentWaitTime = 0;
     }
 
     public void Hide()
