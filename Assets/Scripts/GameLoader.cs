@@ -5,6 +5,8 @@ public class GameLoader : MonoBehaviour
 {
     private void Awake()
     {
+        TutorialManager.Init();
+        
         UIManager.Init();
         
         CraftManager.Init();

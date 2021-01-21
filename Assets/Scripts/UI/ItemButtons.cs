@@ -37,4 +37,9 @@ public class ItemButtons : MonoBehaviour
 
         return true;
     }
+
+    public ItemButton GetItemButton(int index)
+    {
+        return _itemButtons[index];
+    }
 }

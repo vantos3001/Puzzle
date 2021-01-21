@@ -5,7 +5,9 @@ using UnityEngine;
 
 public static class SaveManager
 {
-    public const string SAVE_LEVEL_INDEX_KEY = "level_index";
+    public const string LEVEL_INDEX_SAVE_KEY = "level_index";
+    
+    public const string IS_TUTORIAL_FINISHED_SAVE_KEY = "is_tutorial_finished";
     
     public static void SaveLevel(LevelData levelData, string levelName)
     {
@@ -27,8 +29,36 @@ public static class SaveManager
 
     public static void SaveLevelIndex(int levelIndex)
     {
-        PlayerPrefs.SetInt(SAVE_LEVEL_INDEX_KEY, levelIndex);
+        PlayerPrefs.SetInt(LEVEL_INDEX_SAVE_KEY, levelIndex);
         PlayerPrefs.Save();
+    }
+
+    public static int GetInt(string key, int defaultValue)
+    {
+        return PlayerPrefs.GetInt(key, defaultValue);
+    }
+
+    public static void SaveBool(string key, bool value)
+    {
+        PlayerPrefs.SetInt(key, BoolToInt(value));
+        PlayerPrefs.Save();
+    }
+
+    public static bool GetBool(string key, bool defaultValue = false)
+    {
+        var value = PlayerPrefs.GetInt(key, BoolToInt(defaultValue));
+
+        return IntToBool(value);
+    }
+
+    private static int BoolToInt(bool value)
+    {
+        return value ? 1 : 0;
+    }
+
+    private static bool IntToBool(int value)
+    {
+        return value > 0;
     }
 }
 

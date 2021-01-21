@@ -10,6 +10,7 @@ public static class DataManager
 
     public const string CONFIG_PATH = "Configs";
     private const string GAME_SETTINGS_CONFIG_FILE_NAME = "GameSettingsConfig";
+    private const string TUTORIAL_CONFIG_FILE_NAME = "TutorialConfig";
     
     private static Dictionary<string, Sprite> _cachedInventoryItemIcons = new Dictionary<string, Sprite>();
     private static Dictionary<string, GameObject> _cachedItemPrefabs = new Dictionary<string, GameObject>();
@@ -30,6 +31,21 @@ public static class DataManager
             }
             
             return _gameSettingsConfig;
+        }
+    }
+    
+    private static TutorialConfig _tutorialConfig;
+
+    public static TutorialConfig TutorialConfig
+    {
+        get
+        {
+            if (_tutorialConfig == null)
+            {
+                _tutorialConfig = Load<TutorialConfig>(CONFIG_PATH, TUTORIAL_CONFIG_FILE_NAME);
+            }
+            
+            return _tutorialConfig;
         }
     }
 

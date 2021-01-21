@@ -33,7 +33,7 @@ public static class LevelManager
 
     private static bool ChangeToNextLevel()
     {
-        var currentLevelIndex = PlayerPrefs.GetInt(SaveManager.SAVE_LEVEL_INDEX_KEY, 1);
+        var currentLevelIndex = SaveManager.GetInt(SaveManager.LEVEL_INDEX_SAVE_KEY, 1);
         _currentLevelName = LEVEL_PREFIX_NAME + currentLevelIndex;
         
         Debug.Log("_currentLevelName = " + _currentLevelName);
@@ -51,7 +51,7 @@ public static class LevelManager
 
     public static void FinishLevel()
     {
-        var levelIndex = PlayerPrefs.GetInt(SaveManager.SAVE_LEVEL_INDEX_KEY, 1);
+        var levelIndex = SaveManager.GetInt(SaveManager.LEVEL_INDEX_SAVE_KEY, 1);
         SaveManager.SaveLevelIndex(levelIndex + 1);
 
         HintManager.Clear();

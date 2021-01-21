@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
     [SerializeField] private ItemButtons _itemButtons;
+    public ItemButtons ItemButtons => _itemButtons;
 
     [SerializeField] private Button _tapToStart;
     
@@ -15,6 +16,9 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject _soonNewLevels;
 
     [SerializeField] private UIHeader _uiHeader;
+
+    [SerializeField] private UITutorialHint _tutorialHint;
+    public UITutorialHint TutorialHint => _tutorialHint;
 
     public void Init()
     {

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public enum GameState
 {
@@ -42,6 +43,11 @@ public class GameController : MonoBehaviour
         {
             UiController.ShowSoonNewLevels();
             return;
+        }
+        
+        if (TutorialManager.IsTutorial)
+        {
+            StartCoroutine(TutorialManager.StartTutorial(UiController));
         }
 
         var currentLevel = LevelManager.CurrentLevel;
