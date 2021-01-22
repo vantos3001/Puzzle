@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
 
     private Player _player;
 
-    private void Awake()
+    private void Start()
     {
         Init();
     }
