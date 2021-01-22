@@ -127,8 +127,8 @@ public static class TutorialManager
         {
             From = startHintPosition,
             To = endHintPosition,
-            Speed = 800f,
-            WaitTime = 0.7f
+            Speed = 1000f,
+            WaitTime = 0.9f
         });
         
         _tutorialHint.Show(tutorialMovements);
