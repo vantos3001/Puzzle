@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 7
-  DeadSprite: {fileID: 21300000, guid: 27deb5e2946e5f64e9e83a6a04687b6b, type: 3}
+  DeadSprite: {fileID: 21300000, guid: 9e56b5f76847af4498ce288a1be42cba, type: 3}
   _spriteRenderer: {fileID: 1544666997963652826}
 --- !u!58 &2930368800861601162
 CircleCollider2D:
